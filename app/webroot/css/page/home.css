@@ -1,0 +1,146 @@
+.homeIconConf{
+    width: 35px;
+}
+.colorDark{
+    background-color: #58AAB9;
+    text-align: center;
+
+}
+.colorClear{
+    background-color: #78BDCA;
+    text-align: center;
+}
+.plusIcon{
+    width: 21px;
+    float: right;
+}
+.endSchedule{
+    font-size: 12px;
+    margin-top: 13px;
+    color: #A9A055;
+}
+.massagem{
+    background-image: url(../../img/services/massagem.jpg);
+}
+.imageService{
+    height: 85px;
+    color: #2497AC;
+    font-size: 18px;
+    text-align: center;
+    text-shadow: 0 0 2px #FFF;
+}
+.serviceInfoGeneral {
+    background-color: #2497AC;
+    color: white;
+}
+.font10px {
+    font-size: 10px;
+}
+.font12px {
+    font-size: 12px;
+}
+.calendarArea {
+    background-color: #78BDCA;
+    text-align: center;
+}
+.offerArea{
+    background-color: #58AAB9;
+    text-align: center;
+}
+.homeIconConfRight{
+    width: 35px;
+}
+
+#warning-panel{
+    border-bottom: 1px solid #dcdcdc;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+}
+
+#warning-panel h4{
+    color: #111;
+}
+.warning-footer{
+    text-align: center;
+}
+
+.warning-row{
+    margin-left: 0.2%;
+}
+
+.warning-footer#data{
+    width: 50%;
+}
+
+.warning-footer#ciente{
+    width: 50%;
+}
+
+.looked-btn{
+    font-size: 20px;
+}
+
+.student-row-name{
+    background: #dcdcdc;
+    padding-left: 10px;
+}
+.agenda-menu{
+    //width: 100%;
+    text-align: center;
+    font-size: 12px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    background: #1b6d85;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form-apontamento .col-xs-12{
+    margin-top: 10px;
+}
+
+.list-group-item .label{
+    color: #000;
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.0em;
+}
+
+.label-informative{
+    font-size: 10px;
+    color: #ccc;
+}
+
+.list-group-item{
+    padding: 5px 10px;
+    
+}
+
+.student-box{
+	padding: 5px;
+}
+
+.row .student-content{
+	background: #F8F8FF;
+	width: 100%;
+	margin: 0px;
+}
+
+
+.student-box-photo{
+	height:60px;
+}
+
+.student-box-infos{
+	padding-left: 10px;
+	padding-top: 13px;
+	
+}
+
+.student-box-geral{
+	border: 1px solid #ccc;
+	margin: 5px;
+	margin-left: 1px;
+	margin-right: 1px;
+}

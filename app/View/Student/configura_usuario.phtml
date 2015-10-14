@@ -1,0 +1,336 @@
+<?php
+$students = $this->Session->read('loggedStudent');
+$sts = array_slice($students, 0, count($students) - 1);
+?>
+<!-- WEB -->
+<?php if (!preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"])) { ?>
+    <table class="table table-bordered home-table responsible-table">
+        <tr class="table-home-impar">
+            <td>Usuários</td>
+            <td colspan="2"><?php echo $student[0]['students']['responsible_name_1']; ?> (<a href='#' id="editarButton">alterar</a>)</td>
+            <td colspan="2">
+                <a href='#' class="responsible-name" ><?php echo $student[0]['students']['responsible_email_1']; ?></a> (<a href="#" data-toggle="modal" data-target="#exampleModal">alterar</a>)<br/>
+                *********** (<a href="#"data-toggle="modal" data-target="#exampleModal">alterar</a>)
+            </td>
+            <td class="responsible-table-photo">
+
+            </td>
+        </tr>
+        <tr class="table-home-par">
+            <td></td>
+            <td colspan="2"><?php echo $student[0]['students']['responsible_name_2']; ?> (<a href='#' data-toggle="modal" data-target="#exampleModal">alterar</a>)</td>
+            <td colspan="2">
+                <a href='#' class="responsible-name"><?php echo $student[0]['students']['responsible_email_2']; ?></a> (<a href="#" id="editarButton" data-toggle="modal" data-target="#exampleModal">alterar</a>)<br/>
+                *********** (<a href="#" data-toggle="modal" data-target="#exampleModal">alterar</a>)
+            </td>
+            <td class="responsible-table-photo">
+
+            </td>
+        </tr>
+
+        <?php foreach ($sts as $student) { ?>
+
+            <tr class="table-home-impar">
+                <td>Filho(s)</td>
+                <td><?php echo $student['students']['name']; ?></td>
+                <td><?php
+                    if ($student['students']['gender'] == 'male') {
+                        echo "Menino";
+                    } else {
+                        echo "Menina";
+                    }
+                    ?></td>
+                <td class="text-center">
+                    <?php echo $student['series']['description']; ?>
+                </td>
+                <td class="text-center">
+                    <?php echo date('d/m/Y', strtotime($student['students']['birthday'])); ?>
+                </td>
+                <td class="responsible-table-photo">
+                    <img src="<?php echo $student['students']['photo']; ?>" class="img-circle responsible-photo" />
+                </td>
+            </tr>
+        <?php } ?>
+
+    </table>
+
+    <!-- POP UP -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <form method="post" action="configuraUsuario">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Editar Responsaveis</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <fieldset>
+                            <label><span class="fieldset-label">Responsável 1</span></label>
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Nome:</label>
+                                <input type="text" class="form-control" id="recipient-name" name="responsible_name_1" value="<?php echo $students[0]['students']['responsible_name_1']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Email:</label>
+                                <input type="text" class="form-control" id="recipient-name" name="responsible_email_1" value="<?php echo $students[0]['students']['responsible_email_1']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Senha:</label>
+                                <input type="password" class="form-control" id="recipient-name" name="password" value="<?php echo $students[0]['students']['login_pass']; ?>">
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <label><span class="fieldset-label">Responsável 2</span></label>
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Nome:</label>
+                                <input type="text" class="form-control" id="recipient-name" name="responsible_name_2" value="<?php echo $students[0]['students']['responsible_name_2']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Email:</label>
+                                <input type="text" class="form-control" id="recipient-name" name="responsible_email_2" value="<?php echo $students[0]['students']['responsible_email_2']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Senha:</label>
+                                <input type="password" class="form-control" id="recipient-name" value="<?php echo $students[0]['students']['login_pass']; ?>">
+                            </div>
+                        </fieldset>
+                        <input type="hidden" name="id" value="<?php echo $students[0]['students']['id']; ?>" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        $(function() {
+
+            $('#editarButton').on('show.bs.modal', function(event) {
+                var button = $(event.relatedTarget) // Button that triggered the modal
+                var recipient = button.data('whatever') // Extract info from data-* attributes
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                var modal = $(this)
+                modal.find('.modal-title').text('New message to ' + recipient)
+                modal.find('.modal-body input').val(recipient)
+            });
+        });
+
+    </script>
+
+    <?php
+    echo $this->Html->css('students') . "\n";
+    echo $this->fetch('css');
+    ?>
+
+    <?php
+} else {
+    $this->layout = "";
+    ?>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Configurações</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="../js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/jasny-bootstrap/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" href="../css/page/base.css">
+    <script src="../js/jquery/jquery-2.1.4.min.js"></script>
+    <script src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+
+    <script src="../js/jquery-storage/jquery.cookie.js"></script>
+    <script src="../js/jquery-storage/jquery.storageapi.min.js"></script>
+    <script src="../js/jquery-storage/json2.js"></script>
+    <script src="../js/cadastra_apontamento.js"></script>
+
+    <link rel="stylesheet" href="../css/page/home.css">
+
+
+    <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+        <a class="navmenu-brand" href="#">Meu Diário</a>
+        <ul class="nav navmenu-nav">
+            <li><a href="home">Home</a></li>
+            <li><a href="avisos">Avisos</a></li>
+            <li class="active"><a href="agenda" >Agenda Diária</a></li>
+            <li><a href="eventos">Eventos</a></li>
+            <li><a href="grade">Grade</a></li>
+            <li><a href="configuraUsuario">Configurações</a></li>
+            <li><a href="logout">Sair</a></li>
+        </ul>
+    </nav>
+    <div class="navbar navbar-default navbar-fixed-top centerLogoJezzy">
+        <span class="centerLogo">
+            <img src="../img/school/logo/online-school-mobile.png" class="marginTop5 sizeLogo" />
+        </span>
+        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+            <img src="../img/school/Menu.PNG" class="" />
+        </button>
+        <span class="iconSearchJezzy">
+          <!--  <img src="../img/school/logo/Icon - Fotos.png" class="marginTop5" /> -->
+        </span>
+    </div>
+
+    <div class="container">
+
+        <h3>Configurações</h3>
+        <!-- VISUALIZA -->
+        <div class="panel panel-default" id="original-table">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="label">
+                        Nome
+                    </span>
+                    <span class="label-informative">(Responsável 1)</span>
+                    <br />
+                    <?php echo $student[0]['students']['responsible_name_1']; ?>
+                    <br/>
+                    <a href="#" class="pull-right">editar</a>
+                </li>
+
+                <li class="list-group-item">
+                    <span class="label">
+                        Email
+                    </span>
+                    <span class="label-informative">(Responsável 1)</span>
+                    <br />
+                    <?php echo $student[0]['students']['responsible_email_1']; ?>
+                </li>
+
+                <li class="list-group-item">
+                    <span class="label">
+                        Senha
+                    </span>
+                    <span class="label-informative">(Responsável 1)</span>
+                    <br />
+                    *****
+                </li>
+            </ul>
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="label">
+                        Nome
+                    </span>
+                    <span class="label-informative">(Responsável 2)</span>
+                    <br />
+                    <?php echo $student[0]['students']['responsible_name_2']; ?>
+                </li>
+
+                <li class="list-group-item">
+                    <span class="label">
+                        Email
+                    </span>
+                    <span class="label-informative">(Responsável 2)</span>
+                    <br />
+                    <?php echo $student[0]['students']['responsible_email_2']; ?>
+                </li>
+
+                <li class="list-group-item">
+                    <span class="label">
+                        Senha
+                    </span>
+                    <span class="label-informative">(Responsável 2)</span>
+                    <br />
+                    *****
+                </li>
+                <li class="list-group-item edit">
+                    <a href="#" aria-label="Next" class="edit-link" id="edit-button">editar
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>        
+        </div>
+
+        <!-- EDITA -->
+        <div class="panel panel-default" id="editable-table">
+            <form method="post" action="configuraUsuario">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="label">
+                            Nome
+                        </span>
+                        <span class="label-informative">(Responsável 1)</span>
+                        <br />
+                        <input type="text" class="form-control" id="recipient-name" name="responsible_name_1" value="<?php echo $students[0]['students']['responsible_name_1']; ?>">
+
+                    </li>
+
+                    <li class="list-group-item">
+                        <span class="label">
+                            Email
+                        </span>
+                        <span class="label-informative">(Responsável 1)</span>
+                        <br />
+                        <input type="text" class="form-control" id="recipient-name" name="responsible_email_1" value="<?php echo $students[0]['students']['responsible_email_1']; ?>">
+                    </li>
+
+                    <li class="list-group-item">
+                        <span class="label">
+                            Senha
+                        </span>
+                        <span class="label-informative">(Responsável 1)</span>
+                        <br />
+                        <input type="password" class="form-control" id="recipient-name" name="password" value="<?php echo $students[0]['students']['login_pass']; ?>">
+                    </li>
+                </ul>
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="label">
+                            Nome
+                        </span>
+                        <span class="label-informative">(Responsável 2)</span>
+                        <br />
+                        <input type="text" class="form-control" id="recipient-name" name="responsible_name_2" value="<?php echo $students[0]['students']['responsible_name_2']; ?>">
+                    </li>
+
+                    <li class="list-group-item">
+                        <span class="label">
+                            Email
+                        </span>
+                        <span class="label-informative">(Responsável 2)</span>
+                        <br />
+                        <input type="text" class="form-control" id="recipient-name" name="responsible_email_2" value="<?php echo $students[0]['students']['responsible_email_2']; ?>">
+                    </li>
+
+                    <li class="list-group-item">
+                        <span class="label">
+                            Senha
+                        </span>
+                        <span class="label-informative">(Responsável 2)</span>
+                        <br />
+                        <input type="password" class="form-control" id="recipient-name" value="<?php echo $students[0]['students']['login_pass']; ?>">
+                    </li>
+                    <li class="list-group-item li-footer">
+                        <a href="#" aria-label="Next">
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <button type="reset" class="btn btn-default">Cancelar</button>
+                        </a>
+                    </li>
+                </ul>  
+            </form>
+        </div>
+    </div>
+
+
+    <script src="../js/page/base.js"></script>
+    <script>
+            $(function() {
+            $("#editable-table").fadeOut(0);
+
+                $("#edit-button").click(function() {
+                $("#original-table").fadeOut(0);
+            $("#editable-table").fadeIn(500);
+        });
+        });
+    </script>
+    <?php
+} 
+
+

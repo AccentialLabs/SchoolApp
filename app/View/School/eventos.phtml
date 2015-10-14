@@ -1,0 +1,66 @@
+
+
+<div id="div-content" class="avisos">
+
+    <table border="1" class="table table-bordered home-table" id="avisos">
+        <thead>
+            <tr>
+                <th colspan="5">
+                    Eventos
+                    <a class="btn btn-primary btn-lg home pull-right" id="home-table-button" href="cadastraEvento" role="button">+</a>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Descrição
+                </th>
+                <th>
+                    Quem
+                </th>
+                <th>
+                    Visto
+                </th>
+                <th>
+                    Excluir
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if ($events) {
+                foreach ($events as $event) {
+                    ?>
+                    <tr class="table-home-impar">
+                        <td><?php echo date("d/M", strtotime($event['events']['date'])); ?></td>
+                        <td><?php echo $event['events']['description']; ?></td>
+                        <?php if ($event['events']['public'] == 'ACTIVE') { ?>
+                            <td>Todos</td>
+                        <?php } else { ?>
+                            <td><?php echo $event['events']['to_serie']; ?></td>
+                        <?php } ?>
+                        <td><?php echo $event['events']['looked']; ?>%</td>
+                        <td class="deleterow">
+                            <form method="post" action="eventos">
+                                <input type="hidden" name="id" value="<?php echo $event['events']['id']; ?>" />
+                                <button type="submit" style="background: transparent; border: 0px;" class="glyphicon glyphicon-trash"></button>
+                            </form>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            } else {
+                ?>
+                <tr ><td colspan="5">Nenhum evento cadastrado</td></tr>
+            <?php }
+            ?>
+        </tbody>
+    </table>
+
+</table>
+
+</div>
+

@@ -1,0 +1,22 @@
+
+<ul class="nav">
+
+</ul>
+
+<div style="float: right; color: #999; margin-top: 10px; cursor: pointer;">
+    <a href="UsersSettings/logoof" style="color: #999;">
+        Sair
+    </a>
+</div>
+
+<?php
+if (!empty($contextMenuItems)) {
+    foreach ($contextMenuItems as $item) {
+        $class = $this->request->params['action'] == $item['url']['action'] ? 'class="active"' : '';
+
+        echo "<div style='float: right; color: #999; margin-top: 10px; cursor: pointer; margin-right: 15px;'>";
+        echo $this->Html->link($item['title'], $item['url'], $item['attr']);
+        echo "</div>";
+    }
+}
+?>

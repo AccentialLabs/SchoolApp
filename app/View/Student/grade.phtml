@@ -1,0 +1,362 @@
+<?php
+$seven = explode(",", $grids[0]['grids']['seven']);
+$eight = explode(",", $grids[0]['grids']['eight']);
+$nine = explode(",", $grids[0]['grids']['nine']);
+$quarter_past_nine = explode(",", $grids[0]['grids']['quarter_past_nine']);
+$quarter_past_ten = explode(",", $grids[0]['grids']['quarter_past_ten']);
+$quarter_past_eleven = explode(",", $grids[0]['grids']['quarter_past_eleven']);
+$twelve = explode(",", $grids[0]['grids']['twelve']);
+$fourteen = explode(",", $grids[0]['grids']['fourteen']);
+$fifteen = explode(",", $grids[0]['grids']['fifteen']);
+$sixteen = explode(",", $grids[0]['grids']['sixteen']);
+?>
+<!-- WEB -->
+<?php if (!preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"])) { ?>
+    <div id="div-content">
+        <table border="1" class="table table-bordered home-table" id="grade">
+            <thead>
+                <tr>
+                    <th colspan="6">
+                        Grade de Aulas
+                    </th>
+                </tr>
+                <tr id="labels" class="grade-table">
+                    <th id="hour"></th>
+                    <th>SEGUNDA</th>
+                    <th>TERÇA</th>
+                    <th>QUARTA</th>
+                    <th>QUINTA</th>
+                    <th>SEXTA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-home-impar">
+                    <td>7:00</td>
+                    <?php foreach ($seven as $value) { ?>
+                        <td><?php echo $value; ?></td>
+                    <?php } ?>
+                </tr>
+
+                <tr class="table-home-par">
+                    <td>8:00</td>
+                    <?php foreach ($eight as $value) { ?>
+                        <td><?php echo $value; ?></td>
+                    <?php } ?>
+                </tr>
+
+                <tr class="table-home-impar">
+                    <td>9:00</td>
+                    <?php foreach ($nine as $value) { ?>
+                        <td><?php echo $value; ?></td>
+                    <?php } ?>
+                </tr>
+
+                <tr class="table-home-par">
+                    <td>9:15</td>
+                    <?php foreach ($quarter_past_nine as $value) { ?>
+                        <td><?php echo $value; ?></td>
+                    <?php } ?>
+                </tr>
+
+                <tr class="table-home-impar">
+                    <td>10:15</td>
+                    <?php foreach ($quarter_past_ten as $value) { ?>
+                        <td><?php echo $value; ?></td>
+                    <?php } ?>
+                </tr>
+
+                <tr class="table-home-par">
+                    <td>11:15</td>
+                    <?php foreach ($quarter_past_eleven as $value) { ?>
+                        <td><?php echo $value; ?></td>
+                    <?php } ?>
+                </tr>
+
+                <tr class="table-home-impar">
+                    <td>12:00</td>
+                    <?php foreach ($twelve as $value) { ?>
+                        <td><?php echo $value; ?></td>
+                    <?php } ?>
+                </tr>
+
+                <tr class="table-home-par">
+                    <td>14:00</td>
+                    <?php foreach ($fourteen as $value) { ?>
+                        <td><?php echo $value; ?></td>
+                    <?php } ?>
+                </tr>
+
+                <tr class="table-home-impar">
+                    <td>15:00</td>
+                    <?php foreach ($fifteen as $value) { ?>
+                        <td><?php echo $value; ?></td>
+                    <?php } ?>
+                </tr>
+
+                <tr class="table-home-par">
+                    <td>16:00</td>
+                    <?php foreach ($sixteen as $value) { ?>
+                        <td><?php echo $value; ?></td>
+                    <?php } ?>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <?php
+} else {
+    $this->layout = '';
+    ?>
+
+    <!-- MOBILE -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grade</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="../js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/jasny-bootstrap/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" href="../css/page/base.css">
+    <link rel="stylesheet" href=".https://demos.jquerymobile.com/1.2.0/css/themes/default/jquery.mobile-1.2.0.css">
+    <script src="../js/jquery/jquery-2.1.4.min.js"></script>
+    <script src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+
+    <script src="../js/jquery-storage/jquery.cookie.js"></script>
+    <script src="../js/jquery-storage/jquery.storageapi.min.js"></script>
+    <script src="../js/jquery-storage/json2.js"></script>
+
+    <link rel="stylesheet" href="../css/page/home.css">
+
+
+    <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+        <a class="navmenu-brand" href="#">Meu Diário</a>
+        <ul class="nav navmenu-nav">
+            <li><a href="home">Home</a></li>
+            <li><a href="avisos">Avisos</a></li>
+            <li><a href="agenda">Agenda Diária</a></li>
+            <li><a href="eventos">Eventos</a></li>
+            <li class="active"><a href="grade">Grade</a></li>
+            <li><a href="configuraUsuario">Configurações</a></li>
+            <li><a href="logout">Sair</a></li>
+        </ul>
+    </nav>
+    <div class="navbar navbar-default navbar-fixed-top centerLogoJezzy">
+        <span class="centerLogo">
+            <img src="../img/school/logo/online-school-mobile.png" class="marginTop5 sizeLogo" />
+        </span>
+        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+            <img src="../img/school/Menu.PNG" class="" />
+        </button>
+        <span class="iconSearchJezzy">
+          <!--  <img src="../img/school/logo/Icon - Fotos.png" class="marginTop5" /> -->
+        </span>
+    </div>
+
+    <div class="container">
+
+        <h3 class="pull-left">Grade</h3>
+        <div>
+
+            <table class="table table-hover">
+                <!-- segunda -->
+                <thead>
+                    <tr>
+                        <td></td>
+                        <th>Segunda</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>7:00</td>
+                        <td><?php echo $seven[0]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>8:00</td>
+                        <td><?php echo $eight[0]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>9:00</td>
+                        <td><?php echo $nine[0]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>9:15</td>
+                        <td><?php echo $quarter_past_nine[0]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>10:15</td>
+                        <td><?php echo $quarter_past_ten[0]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>11:15</td>
+                        <td><?php echo $quarter_past_eleven[0]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>12:00</td>
+                        <td><?php echo $twelve[0]; ?></td>
+                    </tr>
+                </tbody>
+
+                <!-- terça -->
+                <thead>
+                    <tr>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <th>Terça</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>7:00</td>
+                        <td><?php echo $seven[1]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>8:00</td>
+                        <td><?php echo $eight[1]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>9:00</td>
+                        <td><?php echo $nine[1]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>9:15</td>
+                        <td><?php echo $quarter_past_nine[1]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>10:15</td>
+                        <td><?php echo $quarter_past_ten[1]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>11:15</td>
+                        <td><?php echo $quarter_past_eleven[1]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>12:00</td>
+                        <td><?php echo $twelve[1]; ?></td>
+                    </tr>
+                </tbody>
+                <!-- quarta -->
+                <thead>
+                    <tr>
+                        <td></td>
+                        <th>Quarta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>7:00</td>
+                        <td><?php echo $seven[2]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>8:00</td>
+                        <td><?php echo $eight[2]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>9:00</td>
+                        <td><?php echo $nine[2]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>9:15</td>
+                        <td><?php echo $quarter_past_nine[2]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>10:15</td>
+                        <td><?php echo $quarter_past_ten[2]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>11:15</td>
+                        <td><?php echo $quarter_past_eleven[2]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>12:00</td>
+                        <td><?php echo $twelve[2]; ?></td>
+                    </tr>
+                </tbody>
+
+                <!-- quinta  -->
+                <thead>
+                    <tr>
+                        <td></td>
+                        <th>Quinta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>7:00</td>
+                        <td><?php echo $seven[3]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>8:00</td>
+                        <td><?php echo $eight[3]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>9:00</td>
+                        <td><?php echo $nine[3]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>9:15</td>
+                        <td><?php echo $quarter_past_nine[3]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>10:15</td>
+                        <td><?php echo $quarter_past_ten[3]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>11:15</td>
+                        <td><?php echo $quarter_past_eleven[3]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>12:00</td>
+                        <td><?php echo $twelve[3]; ?></td>
+                    </tr>
+
+                    <!-- sexta -->
+                <thead>
+                    <tr>
+                        <td></td>
+                        <th>Sexta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>7:00</td>
+                        <td><?php echo $seven[4]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>8:00</td>
+                        <td><?php echo $eight[4]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>9:00</td>
+                        <td><?php echo $nine[4]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>9:15</td>
+                        <td><?php echo $quarter_past_nine[4]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>10:15</td>
+                        <td><?php echo $quarter_past_ten[4]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>11:15</td>
+                        <td><?php echo $quarter_past_eleven[4]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>12:00</td>
+                        <td><?php echo $twelve[4]; ?></td>
+                    </tr>
+                </tbody>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+
+    <script src="../js/page/base.js"></script>
+
+<?php } ?>
+

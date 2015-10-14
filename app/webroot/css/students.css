@@ -1,0 +1,129 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16/09/2015, 15:10:10
+    Author     : user
+*/
+.div-tabs{
+    width: 100%;
+    padding: 7%;
+}
+
+.div-tabs .nav-tabs{
+    color: #098ddf;
+}
+
+.tab-content{
+    color: #000;
+}
+
+.nav-tabs a{
+    color: #098ddf;
+}
+
+.tab-pane table{
+    width: 100%;
+}
+
+.tab-pane table tr td{
+    padding: 5px;
+    border: 2px solid #fff;
+}
+
+.tab-pane table tr td span{
+    font-size: 20px;
+}
+
+.div-tabs h4{
+    color: #000;
+    text-align: left;
+    color: #3A5FCD;
+}
+
+.nav-text{
+    width: 100%;
+    text-align: left;
+}
+
+.diary-row{
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    margin-top: 72px;
+    text-align: left;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.input-date{
+    border: 1px solid #ccc;
+    width: 30%;
+    margin-left: 10px;
+}
+
+.diary-row a{
+    background: #4F81BD;
+    color: #fff;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-decoration: none;
+    border: 1px solid #3b689d;
+}
+
+.diary-row a:hover{
+    text-decoration: none;
+    background: #3b689d;
+} 
+
+.fieldset-label{
+    color: #000;
+}
+
+.modal-body fieldset{
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    color: #000;
+    margin-top: 5px;
+    background: #fff;
+}
+
+.control-label{
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.modal-content .modal-footer{
+    padding: 5px;
+    padding-right: 10px;
+}
+
+.modal-footer button{
+    margin: 0px;
+    margin-right: 5px;
+}
+
+.modal-content .modal-header{
+    color: #000;
+}
+
+.modal-body{
+    background: #F8F8FF;
+}
+
+.looked-btn{
+    cursor: pointer;
+}
+
+.letter-btn{
+    color: #000;
+}
+
+#who-body{
+    width: 80%;
+    border: 1px solid red;
+    color: red;
+}

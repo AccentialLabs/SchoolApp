@@ -1,0 +1,283 @@
+<?php
+$students = $this->Session->read('loggedStudent');
+$sts = array_slice($students, 0, count($students) - 1);
+
+$warnings = $resume['warnings'];
+$daily_schedules = $resume['diary_schedules'];
+$events = $resume['events'];
+
+?>
+<!-- WEB -->
+<?php if (!preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"])) { ?>
+    <div id="div-content" class="home-student">
+        <div class="student-box-area">
+
+            <?php
+            foreach ($sts as $student) {
+                ?>
+                <div class="student-box pull-left">
+                    <div class="infos">
+                        <div class="pull-left student-box-photo">
+                            <img src="<?php echo $student['students']['photo']; ?>" class="img-circle student-photo"/>
+                        </div>
+                        <div class="pull-left student-box-name">
+                            <span>
+                                <?php echo $student['students']['name']; ?><br/>
+        <?php echo $student['series']['description']; ?>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="student-table">
+
+                        <table class='student-box-table'>
+                            <?php if (!empty($warnings[$student['students']['id']]['warnings'])) { ?>
+            <?php if ($warnings[$student['students']['id']]) { ?>
+                                    <tr class="table-home-impar">
+                                        <td class='icon'><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></td>
+                                        <td><?php echo $warnings[$student['students']['id']]['warnings'][0]['warnings']['description'] ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                            }
+                            ?>
+
+                            <?php if (!empty($warnings[$student['students']['id']]['daily_schedules'])) { ?>
+            <?php if ($daily_schedules[$student['students']['id']]) { ?>
+                                    <tr class="table-home-par">
+                                        <td class='icon'><span class="glyphicon glyphicon-book" aria-hidden="true"></span></td>
+                                        <td><?php echo $daily_schedules[$student['students']['id']]['daily_schedules'][0]['daily_schedules']['description'] ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                            }
+                            ?>
+
+                            <?php if (empty($events)) { ?>
+            <?php if (!empty($warnings[$student['students']['id']]['events'])) { ?>
+                                    <tr class="table-home-impar">
+                                        <td class='icon'><span class="glyphicon glyphicon-list" aria-hidden="true"></span></td>
+                                        <td><?php echo $events[$student['students']['id']]['events'][0]['events']['description'] ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                            }
+                            ?>
+
+                            <?php
+                            if (empty($warnings[$student['students']['id']]['events']) &&
+                                    empty($warnings[$student['students']['id']]['daily_schedules']) &&
+                                    empty($warnings[$student['students']['id']]['daily_schedules'])) {
+                                ?>
+                                <tr>
+                                    <td>Ainda não existem avisos para esse(a) aluno(a).</td>
+                                </tr>
+        <?php } ?>
+
+                        </table>
+                    </div>
+                </div>
+
+    <?php } ?>
+
+        </div>
+
+        <div class="home-table-div-student">
+            <table border="1" class="table table-bordered home-table">
+                <thead>
+                    <tr class='table-name'>
+                        <th colspan="4"> 
+                            Notícias
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+    <?php if ($news[0]) { ?>
+                        <tr class="table-home-impar">
+                            <td><?php echo date("d/M", strtotime($news[0][0]['warnings']['date'])); ?></td>
+                            <td><?php echo $news[0][0]['warnings']['description']; ?></td>
+                            <td class='icon'><a href="avisos"><span class="glyphicon glyphicon-envelope letter-btn" aria-hidden="true"></span></a></td>
+                        </tr>
+                    <?php } ?>
+    <?php if ($news[1]) { ?>
+                        <tr class="table-home-impar">
+                            <td><?php echo date("d/M", strtotime($news[1][0]['daily_schedules']['date'])); ?></td>
+                            <td><?php echo $news[1][0]['daily_schedules']['desciption']; ?></td>
+                            <td class='icon'><a href="agenda" ><span class="glyphicon glyphicon-envelope letter-btn" aria-hidden="true"></span></a></td>
+                        </tr>
+                    <?php } ?>
+
+    <?php if ($news[2]) { ?>
+                        <tr class="table-home-impar">
+                            <td><?php echo date("d/M", strtotime($news[2][0]['events']['date'])); ?></td>
+                            <td><?php echo$news[2][0]['events']['description']; ?></td>
+                            <td class='icon'><a href="eventos"><span class="glyphicon glyphicon-envelope letter-btn" aria-hidden="true"></span></a></td>
+                        </tr>
+    <?php } ?>
+                </tbody>
+            </table>
+
+            </table>
+        </div>
+
+    </div>
+
+    <?php
+} else {
+    $this->layout = '';
+    ?>
+    <!-- MOBILE -->
+
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="../js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/jasny-bootstrap/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" href="../css/page/base.css">
+    <script src="../js/jquery/jquery-2.1.4.min.js"></script>
+    <script src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+
+    <script src="../js/jquery-storage/jquery.cookie.js"></script>
+    <script src="../js/jquery-storage/jquery.storageapi.min.js"></script>
+    <script src="../js/jquery-storage/json2.js"></script>
+    <link rel="stylesheet" href="../css/page/home.css">
+
+
+    <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+        <a class="navmenu-brand" href="#">Meu Diário</a>
+        <ul class="nav navmenu-nav">
+            <li class="active"><a href="home">Home</a></li>
+            <li><a href="avisos">Avisos</a></li>
+            <li><a href="agenda">Agenda Diária</a></li>
+            <li><a href="eventos">Eventos</a></li>
+            <li><a href="grade">Grade</a></li>
+            <li><a href="configuraUsuario">Configurações</a></li>
+            <li><a href="logout">Sair</a></li>
+        </ul>
+    </nav>
+    <div class="navbar navbar-default navbar-fixed-top centerLogoJezzy">
+        <span class="centerLogo">
+            <img src="../img/school/logo/online-school-mobile.png" class="marginTop5 sizeLogo" />
+        </span>
+        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+            <img src="../img/school/Menu.PNG" class="" />
+        </button>
+        <span class="iconSearchJezzy">
+          <!--  <img src="../img/school/logo/Icon - Fotos.png" class="marginTop5" /> -->
+        </span>
+    </div>
+
+    <div class="container">
+
+        <h3><?php echo $students[0]['schools']['name'];?></h3>
+
+    <?php foreach ($sts as $student) { ?>
+            <div class="row student-box-geral">
+                <div class="row student-content">
+                    <div class="pull-left student-box">
+                        <img src="<?php echo $student['students']['photo']; ?>" class="student-box-photo"/>
+                    </div>
+                    <div class="pull-left student-box-infos">
+                        <span>
+                            <strong>
+        <?php echo $student['students']['name']; ?>
+                            </strong>
+                            <br/>
+        <?php echo $student['series']['description']; ?>
+                        </span>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <tbody>
+
+                        <?php if (!empty($warnings[$student['students']['id']]['warnings'])) { ?>
+            <?php if ($warnings[$student['students']['id']]) { ?>
+                                <tr class="table-home-impar">
+                                    <td class='icon'><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></td>
+                                    <td><?php echo $warnings[$student['students']['id']]['warnings'][0]['warnings']['description']; ?></td>
+                                </tr>
+                                <?php
+                            }
+                        }
+                        ?>
+
+                        <?php if (!empty($warnings[$student['students']['id']]['daily_schedules'])) { ?>
+            <?php if ($daily_schedules[$student['students']['id']]) { ?>
+                                <tr class="table-home-par">
+                                    <td class='icon'><span class="glyphicon glyphicon-book" aria-hidden="true"></span></td>
+                                    <td><?php echo $daily_schedules[$student['students']['id']]['daily_schedules'][0]['daily_schedules']['description']; ?></td>
+                                </tr>
+                                <?php
+                            }
+                        }
+                        ?>
+
+                        <?php if (empty($events)) { ?>
+            <?php if (!empty($warnings[$student['students']['id']]['events'])) { ?>
+                                <tr class="table-home-impar">
+                                    <td class='icon'><span class="glyphicon glyphicon-list" aria-hidden="true"></span></td>
+                                    <td><?php echo $events[$student['students']['id']]['events'][0]['events']['description']; ?></td>
+                                </tr>
+                                <?php
+                            }
+                        }
+                        ?>					
+
+                    </tbody>
+                </table>
+            </div>
+    <?php } ?>
+
+        <!-- avisos públicos -->
+        <div class="row student-box-geral">
+            <div class="row student-content">
+                <div class="pull-left student-box">
+                    <img src="<?php echo $students[0]['schools']['photo']; ?>" class="student-box-photo"/>
+                </div>
+                <div class="pull-left student-box-infos">
+                    <span>
+                        <strong>
+                            Avisos Públicos
+                        </strong>
+                        <br/>
+                    </span>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <tbody>
+
+    <?php if ($news[0]) { ?>
+                        <tr class="table-home-impar">
+                            <td class='icon'><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></td>
+                            <td><?php echo $news[0][0]['warnings']['description']; ?></td>
+                        </tr>
+                    <?php } ?>
+
+    <?php if ($news[1]) { ?>
+                        <tr class="table-home-par">
+                            <td class='icon'><span class="glyphicon glyphicon-book" aria-hidden="true"></span></td>
+                            <td><?php echo $news[1][0]['daily_schedules']['desciption']; ?></td>
+                        </tr>
+                    <?php } ?>
+
+    <?php if ($news[2]) { ?>
+                        <tr class="table-home-impar">
+                            <td class='icon'><span class="glyphicon glyphicon-list" aria-hidden="true"></span></td>
+                            <td><?php echo$news[2][0]['events']['description']; ?></td>
+                        </tr>				
+    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <script src="js/page/base.js"></script>
+    <?php
+}
+?>

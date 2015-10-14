@@ -1,0 +1,13 @@
+<ul class="nav nav-tabs nav-justified>
+	<?php
+		if(!empty($contextMenuItems)) {
+			foreach($contextMenuItems as $item) {
+				$class =  $this->request->params['action'] == $item['url']['action'] ? 'class="active"' : '';
+
+				echo "<li {$class}>";
+				echo $this->Html->link($item['title'],$item['url'],$item['attr']);
+				echo "</li>";
+			}
+		}
+	?>
+</ul>

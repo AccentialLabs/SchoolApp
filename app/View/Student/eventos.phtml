@@ -1,0 +1,257 @@
+<?php echo $this->Html->script('Product.product_manipulation', array('inline' => false)); ?>
+<?php
+$students = $this->Session->read('loggedStudent');
+$sts = array_slice($students, 0, count($students) - 1);
+?>
+
+<!-- WEB -->
+<?php if (!preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"])) { ?>
+    <div id="div-content">
+        <div class="div-tabs">
+            <h4>Eventos</h4>
+            <ul class="nav nav-tabs nav-justified">
+
+                <?php
+                $cont = 0;
+                foreach ($sts as $student) {
+                    if ($cont == 0) {
+                        ?>
+                        <li class="active li-nav">
+                            <a data-toggle="tab" href="#<?php echo $student['students']['id']; ?>">
+                                <div class="nav-text">
+                                    <?php echo $student['students']['name']; ?><br/>
+                                    <?php echo $student['series']['description']; ?>
+                                </div>
+                            </a>
+                        </li>
+                        <?php
+                        $cont++;
+                    } else {
+                        ?>
+                        <li class="li-nav">
+                            <a data-toggle="tab" href="#<?php echo $student['students']['id']; ?>">
+                                <div class="nav-text">
+                                    <?php echo $student['students']['name']; ?><br/>
+                                    <?php echo $student['series']['description']; ?>
+                                </div>
+                            </a>
+                        </li>
+                        <?php
+                    }
+                }
+                ?>
+            </ul>
+
+
+            <!-- CONTEUDO -->
+            <div class="tab-content">
+
+                <?php
+                $contador = 0;
+                foreach ($sts as $student) {
+                    if ($contador == 0) {
+                        ?>
+                        <div id="<?php echo $student['students']['id']; ?>" class="tab-pane fade in active">
+                            <?php
+                            $eventsByUser = $events[$student['students']['id']];
+                            $eventsPublic = $events[0];
+                            ?>
+                            <table>
+                                <!-- FOREACH para os avisos já selecionados de estudantes espificos -->
+                                <?php foreach ($eventsByUser as $event) { ?>
+                                    <tr class="table-home-impar">
+                                        <td>
+                                            <span class="glyphicon glyphicon-ok-circle looked-btn"></span>  Ciente?
+                                        </td>
+                                        <td>
+                                            <?php echo $event['events']['description']; ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+
+                                <?php foreach ($eventsPublic as $event) { ?>
+                                    <tr class="table-home-impar">
+                                        <td>
+                                            <span class="glyphicon glyphicon-ok-circle looked-btn"></span>  Ciente?
+                                        </td>
+                                        <td>
+                                            <?php echo $event['events']['description']; ?>
+                                        </td>
+                                        <td class="date-td">
+                                            <?php echo date("d/M", strtotime($event['events']['date'])); ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </table>
+                        </div>
+
+                        <?php
+                        $contador++;
+                    } else {
+                        ?>
+                        <div id="<?php echo $student['students']['id']; ?>" class="tab-pane fade">
+                            <?php
+                            $eventsByUser = $events[$student['students']['id']];
+                            $eventsPublic = $events[0];
+                            ?>
+                            <table>
+                                <!-- FOREACH para os avisos já selecionados de estudantes espificos -->
+                                <?php foreach ($eventsByUser as $event) { ?>
+                                    <tr class="table-home-impar">
+                                        <td>
+                                            <span class="glyphicon glyphicon-ok-circle looked-btn"></span>  Ciente?
+                                        </td>
+                                        <td>
+                                            <?php echo $event['events']['description']; ?>
+                                        </td>
+                                        <td class="date-td">
+                                            <?php echo date("d/M", strtotime($event['events']['date'])); ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                                <?php foreach ($eventsPublic as $event) { ?>
+                                    <tr class="table-home-impar">
+                                        <td>
+                                            <span class="glyphicon glyphicon-ok-circle looked-btn"></span>  Ciente?
+                                        </td>
+                                        <td>
+                                            <?php echo $event['events']['description']; ?>
+                                        </td>
+                                        <td class="date-td">
+                                            <?php echo date("d/M", strtotime($event['events']['date'])); ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+
+                            </table>
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
+            </div>
+
+        </div>
+    </div>
+
+    <link href="../css/students.css" rel="stylesheet">
+
+<?php
+} else {
+    $this->layout = '';
+    ?>
+    <!-- MOBILE -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="../js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/jasny-bootstrap/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" href="../css/page/base.css">
+    <script src="../js/jquery/jquery-2.1.4.min.js"></script>
+    <script src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+
+    <script src="../js/jquery-storage/jquery.cookie.js"></script>
+    <script src="../js/jquery-storage/jquery.storageapi.min.js"></script>
+    <script src="../js/jquery-storage/json2.js"></script>
+
+    <link rel="stylesheet" href="../css/page/home.css">
+
+
+    <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+        <a class="navmenu-brand" href="#">Meu Diário</a>
+        <ul class="nav navmenu-nav">
+            <li><a href="home">Home</a></li>
+            <li><a href="avisos">Avisos</a></li>
+            <li><a href="agenda">Agenda Diária</a></li>
+            <li class="active"><a href="eventos">Eventos</a></li>
+            <li><a href="grade">Grade</a></li>
+            <li><a href="configuraUsuario">Configurações</a></li>
+            <li><a href="logout">Sair</a></li>
+        </ul>
+    </nav>
+    <div class="navbar navbar-default navbar-fixed-top centerLogoJezzy">
+        <span class="centerLogo">
+            <img src="../img/school/logo/online-school-mobile.png" class="marginTop5 sizeLogo" />
+        </span>
+        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+            <img src="../img/school/Menu.PNG" class="" />
+        </button>
+        <span class="iconSearchJezzy">
+          <!--  <img src="../img/school/logo/Icon - Fotos.png" class="marginTop5" /> -->
+        </span>
+    </div>
+
+    <div class="container">
+
+        <h3>Eventos</h3>
+
+        <!--AVISOS DIRECIONADOS -->
+        <?php foreach ($sts as $student) { ?>
+            <div class="row student-row-name"> <h4><?php echo $student['students']['name']; ?></h4></div>
+            <?php
+            $eventsByUser = $events[$student['students']['id']];
+            foreach ($eventsByUser as $event) {
+                ?>
+                <div class="ui-responsive-panel" id='warning-panel'>
+                    <span>
+
+            <?php echo $event['events']['description']; ?>
+                    </span>
+                    <div class="row warning-row">
+                        <div class="warning-footer" id="data" style='float: left;'>
+                            <h4>Data</h4>
+                            <span><?php echo date("d/M", strtotime($event['events']['date'])); ?></span>
+                        </div>
+                        <div class="warning-footer " id="ciente" style='float: left;'>
+                            <h4>Ciente?</h4>
+                            <span class="glyphicon glyphicon-ok-circle looked-btn" id="btn-looked"></span>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+        }
+        ?>
+
+        <!-- AVISOS PÚBLICOS -->
+        <div class="row student-row-name"> <h4>
+                Eventos Públicos</h4></div>
+        <?php
+        $eventsPublic = $events[0];
+        foreach ($eventsPublic as $event) {
+            ?>
+            <div class="ui-responsive-panel" id='warning-panel'>
+                <span>
+
+        <?php echo $event['events']['description']; ?>
+                </span>
+                <div class="row warning-row">
+                    <div class="warning-footer" id="data" style='float: left;'>
+                        <h4>Data</h4>
+                        <span><?php echo date("d/M", strtotime($event['events']['date'])); ?></span>
+                    </div>
+                    <div class="warning-footer " id="ciente" style='float: left;'>
+                        <h4>Ciente?</h4>
+                        <span class="glyphicon glyphicon-ok-circle looked-btn" id="btn-looked"></span>
+                    </div>
+                </div>
+            </div>
+        <?php }
+        ?>
+    </div>
+
+
+    <script src="js/page/base.js"></script>
+
+
+    <?php
+} 
+
+
+
+
+
+

@@ -1,0 +1,97 @@
+<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+<div id="div-content" class="avisos">
+    <table border="1" class="table table-bordered home-table" id="avisos">
+        <thead>
+            <tr>
+                <th colspan="5">
+                    Professores
+                    <a class="btn btn-primary btn-lg home pull-right" id="home-table-button" href="cadastraProfessor" role="button">+</a>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    E-mail
+                </th>
+                <th>
+                    Telefone
+                </th>
+                <th>
+                    Foto
+                </th>
+                <th>
+                    Remover
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <?php
+            if ($teachers) {
+                foreach ($teachers as $teacher) {
+                    ?>
+                    <tr class="table-home-impar" id="<?php echo $teacher['teachers']['id']; ?>">
+                        <td><?php echo $teacher['teachers']['name']; ?></td>
+                        <td><?php echo $teacher['teachers']['email']; ?></td>
+                        <td><?php echo $teacher['teachers']['phone']; ?> alunos</td>
+                        <td class="teachers-photo">
+                            <a href="#" onclick="seePhoto('<?php echo $teacher['teachers']['photo']; ?>');" id="verFoto" data-toggle="modal" data-target="#exampleModal"  value="<?php echo $teacher['teachers']['photo']; ?>">ver foto</a>
+                        </td>
+                        <td class="deleterow">
+                            <form method="post" action="professores">
+                                <input type="hidden" name="id" value="<?php echo $teacher['teachers']['id']; ?>" />
+                                <button type="submit" style="background: transparent; border: 0px;" class="glyphicon glyphicon-trash"></button>
+                            </form>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            } else {
+                ?>
+                <tr ><td colspan="5">Nenhum professor cadastrado</td></tr>
+            <?php }
+            ?>
+        </tbody>
+    </table>
+
+</table>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+            <img src="" id="teacher-photo" />
+
+        </div>
+    </div>
+</div>
+<script>
+
+    //atrubui valor ao SRC da imagem antes de mostrar POPUP
+    function seePhoto(src) {
+        $("#teacher-photo").attr("src", src);
+    }
+
+    $(function() {
+
+        $('#verFoto').on('show.bs.modal', function(event) {
+
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var recipient = button.data('whatever'); // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this);
+            modal.find('.modal-title').text('New message to ' + recipient);
+            modal.find('.modal-body input').val(recipient);
+        });
+    });
+
+</script>
+
+
+

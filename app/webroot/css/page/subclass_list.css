@@ -1,0 +1,43 @@
+.bottomLine {
+    width: 100%;
+    border-bottom: 1px solid #A9A055;
+    margin-top: 6px;
+}
+.listColorsAndFont {
+    color: #2497AC;
+    font-size: 18px;
+}
+.floatLeft {
+    float: left;
+}
+
+.floatRight{
+    float: right;
+}
+
+.col-xs-12 {
+    margin-top: 6px;
+}
+
+.marginTop20{
+    margin-top: 20px;
+}
+
+.fontSizeClass {
+    font-size: 15px;
+}
+.plusIcon{
+    width: 21px;
+    float: right;
+}
+.textCenter {
+    text-align: center;
+}
+.leftIcon{
+    width: 15px;
+    float: left;
+    margin-right: -20px;
+}
+.textCenter {
+    text-align: center;
+}

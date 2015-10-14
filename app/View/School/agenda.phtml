@@ -1,0 +1,256 @@
+<?php
+$waitNotes = '';
+$i = 0;
+foreach ($notes as $note) {
+    if ($note['notes']['status'] == 'WAIT' && $note['notes']['note_to'] == 'adm') {
+        $waitNotes[$i] = $note;
+        $i++;
+    }
+}
+
+$readNotes = count($notes) - count($waitNotes);
+?>
+<div class="row pull-left row-school">
+    <button class="btn btn-default" id="btn-schedules" >Agenda</button>
+    <button class="btn btn-default" id="btn-notes" >Apontamentos <span class="badge"><?php echo count($waitNotes); ?></span></button>
+</div>
+<div id="div-content" class="avisos">
+
+    <table border="1" class="table table-bordered home-table" id="avisos">
+        <thead>
+            <tr>
+                <th colspan="5">
+                    Agenda Diária
+                    <a class="btn btn-primary btn-lg home pull-right" id="home-table-button" href="cadastraAgenda" role="button">+</a>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Descrição
+                </th>
+                <th>
+                    Quem
+                </th>
+                <th>
+                    Visto
+                </th>
+                <th>
+                    Excluir
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <?php
+            if ($schedules) {
+                foreach ($schedules as $schedule) {
+                    ?>
+                    <tr class="table-home-impar">
+                        <td><?php echo date("d/M", strtotime($schedule['daily_schedules']['date'])); ?></td>
+                        <td><?php echo $schedule['daily_schedules']['description']; ?></td>
+                        <?php if ($schedule['daily_schedules']['public'] == 'ACTIVE') { ?>
+                            <td>Todos</td>
+                        <?php } else { ?>
+                            <td><?php echo $schedule['daily_schedules']['to_serie']; ?></td>
+                        <?php } ?>
+                        <td><?php echo $schedule['daily_schedules']['looked']; ?>%</td>
+                        <td class="deleterow">
+                            <form method="post" action="agenda">
+                                <input type="hidden" name="id" value="<?php echo $schedule['daily_schedules']['id']; ?>" />
+                                <button type="submit" style="background: transparent; border: 0px;" class="glyphicon glyphicon-trash"></button>
+                            </form>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            } else {
+                ?>
+                <tr ><td colspan="5">Nenhuma agenda cadastrada</td></tr>
+            <?php }
+            ?>
+        </tbody>
+    </table>
+
+</table>
+
+</div>
+
+<div class="div-content" id="notes">
+
+    <div class="div-tabs">
+        <h4>Avisos</h4>
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active li-nav" id="schedules">
+                <a data-toggle="tab" href="#novas">
+                    <div class="nav-text">
+                        Não lidos   <span class="badge pull-right"><?php echo count($waitNotes); ?></span>
+                    </div>
+                </a>
+            </li>
+            <li class="li-nav <?php
+            if ($readNotes == 0) {
+                echo "disabled";
+            }
+            ?>" id="schedules">
+                <a data-toggle="tab" href="#lidos">
+                    <div class="nav-text">
+                        Lidos <span class="badge pull-right"><?php echo $readNotes; ?></span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content" id="schedules">
+            <div id="novas" class="tab-pane fade in active">
+                <!-- NÃO LIDAS-->
+
+                <table border="1" class="table table-bordered home-table" id="avisos">
+                    <thead>
+
+                        <tr>
+                            <th>
+                                Data
+                            </th>
+                            <th class="who">
+                                Quem
+                            </th>
+                            <th>
+                                Descrição
+                            </th>
+
+                            <th>
+                                Visto
+                            </th>
+
+                            <th>
+                                Responder
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if ($notes) {
+                            foreach ($notes as $note) {
+                                if ($note['notes']['status'] == 'WAIT') {
+                                    ?>
+                                    <tr class="table-home-impar">
+                                        <td><?php echo date("d/M", strtotime($note['notes']['date'])); ?></td>
+                                        <td>
+                                            <span class="">Responsável: </span><?php echo $note['students']['responsible_name_1']; ?><br/>
+                                            <span>Aluno: </span><?php echo $note['students']['name']; ?>
+                                            <span>Série: </span><?php echo $note['series']['description']; ?>
+                                        </td>
+                                        <td><?php echo $note['notes']['description']; ?></td>
+                                        <td class="deleterow" id="looked-td">
+                                            <form method="post" action="notes">
+                                                <input type="hidden" name="id" value="<?php echo $note['notes']['id']; ?>" />
+                                                <button type="submit" style="background: transparent; border: 0px;">
+                                                    <span class="glyphicon glyphicon-ok-circle"></span>
+                                                </button>
+                                            </form>
+                                        </td>
+                                        <td class="answer" onclick="showModal('<?php echo $note['notes']['description']; ?>',<?php echo $note['notes']['id']; ?>)">
+                                            <a href="#" data-toggle="modal" data-target="#exampleModal">
+                                                <button type="#" style="background: transparent; border: 0px;">
+                                                    <span class="glyphicon glyphicon-share-alt" id="answer-icon"></span>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <?php
+                                }
+                            }
+                        } else {
+                            ?>
+                            <tr ><td colspan="5">Nenhum apontamento enviado a você</td></tr>
+                        <?php }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div id="lidos" class="tab-pane fade">
+                <table border="1" class="table table-bordered home-table" id="avisos">
+                    <thead>
+
+                        <tr>
+                            <th>
+                                Data
+                            </th>
+                            <th>
+                                Quem
+                            </th>
+                            <th>
+                                Descrição
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if ($notes) {
+                            foreach ($notes as $note) {
+                                if ($note['notes']['status'] == 'READ') {
+                                    ?>
+                                    <tr class="table-home-impar">
+                                        <td><?php echo date("d/M", strtotime($note['notes']['date'])); ?></td>
+                                        <td>
+                                            <span class="">Responsável: </span><?php echo $note['students']['responsible_name_1']; ?><br/>
+                                            <span>Aluno: </span><?php echo $note['students']['name']; ?>
+                                            <span>Série: </span><?php echo $note['series']['description']; ?>
+                                        </td>
+                                        <td><?php echo $note['notes']['description']; ?></td>
+                                    </tr>
+
+                                    <?php
+                                }
+                            }
+                        } else {
+                            ?>
+                            <tr ><td colspan="5">Nenhum apontamento enviado a você</td></tr>
+                        <?php }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <?php
+    echo $this->Html->script('schedules') . "\n";
+    ?>
+
+    <!-- POP UP -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <form method="post" action="#">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="ModalLabel">Responder</h4>
+                    </div>
+                    <div class="modal-body schedule" id="schedule-body">
+                        <h4>Mensagem:</h4>
+                        <span id="modal-descrition"></span>
+                        <input type="hidden" id="modal-answer-to" />
+                    </div>
+                    <div class="modal-body-answer">
+                        <span class="divider"></span>
+                        <h4>Resposta:</h4>
+                        <textarea class="form-control" id="schedule-textarea" rows="5"></textarea>
+                    </div>
+                    <div class="modal-footer" id="schedule-footer">
+                        <button type="reset" class="btn btn-default">Cancelar</button>
+                        <button  class="btn btn-default">Responder</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+

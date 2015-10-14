@@ -1,0 +1,807 @@
+/*
+
+ * style.css
+ */
+body {
+    //  padding-top: 50px;
+}
+
+.col-md-8{
+    width: 82%;
+    height: 100%;
+}
+
+.col-md-4 {
+    width: 18%;
+    background: #4F81BD;
+    // height: 100%;
+}
+
+#menu-lateral{
+    background: #4F81BD;
+    border: 0px;
+    //border: 1px solid red;
+    // height: 100%;
+}
+
+#header{
+    background: #93B3D7;
+}
+
+.container{
+    margin: 0px;
+    width: 100%;
+    // border: 1px solid red;
+    height: 99%;
+    display: block;
+    position: absolute;
+}
+
+/* style.css */
+.container, .container-fluid {
+    background-color: #f9f9f9;
+}
+.row {
+    padding: 0px;
+    color: #fff;
+    //background: #4169E1;
+}
+
+header.row {
+    //background: #1E90FF;
+    text-align: left;
+    padding-left: 20px;
+    //font-style: bold;
+}
+[class*="col-"], header, footer, nav, aside, section, div[role="main"] {
+    background-color: #f5f5f5;
+    background-color: rgba(86,61,124,.15);
+    border: 1px solid #ddd;
+    border: 1px solid rgba(86,61,124,.2);
+    text-align: center;
+}
+div[role="main"] {
+    background-color: #fff;
+}
+div[role="main"], nav, aside {
+    min-height: 600px;
+}
+
+.nav, .nav-pills, .nav-stacked li{
+    text-align: left;
+}
+
+.wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav {
+
+    z-index: 200;
+    position: relative;
+
+    font-size: 1em;
+    float: left;
+    width: 100%;
+}
+
+.nav ul {
+    padding: 1em;
+}
+
+li {
+    display: block;
+    width: 100%;
+    margin: 1em 2em 1em 0;
+}
+
+a {
+    text-decoration: none;
+    color: #FFF;
+}
+
+a:hover {
+    color: #1E90FF;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.foto {
+    width: 80%;
+    float: right;
+}
+
+.form-signin{
+    width: 40%;
+    padding-top: 18%;
+    margin-left: 30%;
+}
+
+.form-signin img {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+
+/*Media Queries*/
+@media only screen and (max-width: 800px) {
+
+    #col-md-8{
+        width: 100%;
+    }
+
+    #div-content{
+        width: 100%;
+    }
+
+    .wrap {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .nav {
+        width: 175px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #4F81BD;
+    }
+
+    .nav ul {
+        padding: .5em;
+        margin: 0;
+        background: #444;
+    }		
+
+    li {
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+
+    li a {
+        padding: 0.5em 0 0.5em 0;
+        display: block;
+        color: #FFF;
+    }
+
+
+    .nav-toggle {
+        position: absolute;
+        top: 0;
+        right: -40px;
+        color: #FFF;
+        cursor: pointer;
+        width: 44px;
+        height: 34px;
+        z-index: 1000;
+        display: block;
+        background: #444;
+        padding: 12px 6px 6px 6px;
+    }
+
+    .foto {
+        width: 100%;
+        position: relative;
+        float: none;
+    }
+
+    .form-signin{
+        width: 100%;
+        padding-top: 18%;
+        margin-left: 0%;
+
+    }
+
+}
+
+.navbar-default{
+    height: 50px;
+}
+
+.navbar-toggle {
+    padding: 3px;
+}
+
+#principal-menu{
+    margin-left: -120px;
+}
+
+.list-group, panel{
+    border: 0px;
+}
+
+.list-group.panel > .list-group-item {	
+    background: #4682B4;
+    color: #fff;
+    border: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.list-group.panel > .list-group-item:HOVER{
+    background: #fff;
+    color: #4682B4;
+}
+
+/*
+div.active{
+        height:100%;
+        width: 100%;
+        background: #fff;
+        padding-top: 10px;
+        color: #4682B4;
+        padding-bottom: 10px;
+        margin-right: 20px;
+
+}*/
+
+.list-group-submenu {
+    margin-left:20px;
+}
+
+.vertical-menu{
+    width: 20%;
+    top: 50px;
+    bottom: -50px;
+    border: 1px solid #ccc;
+    max-height: 93%;
+    height: 93.5%;
+    position: absolute;
+    min-width: 50px;
+    background: #4682B4;
+
+}
+
+html, body{
+    height: 100%;
+}
+
+.statistics-box{
+    width: 33%;
+    height: 210px;
+    min-width: 250px;
+}
+
+.statistics-box h4{
+    color: #666;
+}
+
+.btn, .btn-primary, .home{
+    float: right;
+    margin-top: -30px;
+}
+
+.home-statistics{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.home-table th{
+    color: #3A5FCD;
+
+}
+
+.home-table td{
+
+}
+
+.table, .table-bordered, .home-table{
+
+}
+
+#home-table-button{
+    margin: 0px;
+}
+
+table.home-table{
+    margin-top: 100px;   
+}
+
+.table-home-impar{
+    background: #A4D3EE;
+}
+
+.table-home-par{
+    background: #C6E2FF;
+}
+
+.home-table-div {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 200px;
+    position: initial;
+}
+
+table.home-table#avisos{
+    margin-top: 0px; 
+}
+
+#div-content.avisos{
+    padding-top: 7%;
+}
+
+td.delete{
+    text-align: center;
+}
+
+
+.cadAviso h4{
+    color: #3A5FCD;
+    text-align: left;
+    margin-bottom: 0px;
+}
+
+.cadSeries h4{
+    color: #3A5FCD;
+    text-align: left;
+    margin-bottom: 0px;
+}
+
+hr{
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #3A5FCD -moz-use-text-color #3A5FCD;
+    border-style: solid none;
+    border-width: 1px 0;
+    margin: 5px;
+}
+
+div.cadAviso{
+    padding-left: 40px;
+}
+
+
+
+span.label{
+    color: #000;
+    font-weight: bold;
+    font-size: 1.0em;
+}
+
+.school-form{
+    border: 0px;
+}
+
+.drop-serie{
+    margin-top: 30px;
+    width: 80%;
+}
+
+.btn-drop-serie{
+    width: 80%;
+}
+
+.cadSeries{
+    padding-left: 30px;
+    padding-top: 7%;
+}
+
+.form-control#sel1{
+    margin-top: 0px;
+}
+
+#carrega-planilha-button{
+    margin: 0;
+    margin-right: 5px;
+}
+
+.buttons-area{ 
+    position: absolute;
+    bottom: 10px;
+    padding-top: 10px;
+    width: 94%;
+}
+
+table#grade tr td#content-btns a{
+    margin: 0px;
+}
+
+
+.buttons-area a{
+    margin-right: 5px;
+}
+
+.checkbox-inline{
+    font-weight: bold;
+    color: #333;
+    border-bottom: 2px solid #dcdcdc;
+    padding-bottom: 3px;
+    padding-top: 10px;
+    width: 100%;
+    text-align: left;
+}
+
+.btn-drop-aluno{
+    width: 80%;
+    margin: 3px;
+}
+
+#cadAluno input[type=checkbox]{
+
+}
+
+.check{
+    margin-left: 5%;
+}
+
+.btn-file {
+    //position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    //position: absolute;
+    //top: 0;
+    // right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#cadAluno input[type="file"]{
+    width: 80%;
+}
+
+.config-school{
+
+}
+
+.btn-region-config{
+    border-bottom: 0px;
+}
+
+.btn-region-config .btn{
+    margin: 5px;
+}
+
+#corpo{
+    //border: 1px solid red;
+    height: 95%;
+    width: 100%;
+    position: absolute;
+    background: #4F81BD;
+}
+
+
+#btnLogin{
+    width: 100%;
+    margin: 0px;
+}
+
+// Login
+.login-body{
+    background: red;
+    border: 1px solid red;
+}
+
+.form-warning{
+    color: #333;
+}
+
+.form-warning a{
+    color: #93B3D7;
+}
+
+
+#serie-content label{
+    color: #000;
+    text-align: left;
+}
+
+#serie-content{
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: -80px;
+}
+
+table#grade input{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/**
+*
+*    ALUNOS/ PAIS 
+*/
+.th-label{
+    color: #fff;
+    background: #4F81BD;
+}
+
+.grade-table th{
+    color: #fff;
+    background: #4F81BD;
+    text-align: center;
+    width: 10%;
+}
+
+.grade-table th#hour{
+    width: 5%;
+}
+
+.home-table-div-student {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 300px;
+    position: initial;
+}
+
+.student-box{
+    width: 30%;
+    height: 40%;
+    color: #000;
+}
+
+.student-box-area{
+
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.student-photo{
+    width: 80px;
+    height: 80px;
+}
+
+.student-photo-header{
+    width: 100%;
+    height: 100%;
+}
+
+.user-photo-cont{
+    height: 40px;
+    width: 40px;
+    margin-right: 15px;
+}
+
+.student-box-photo{
+    padding: 10px;
+}
+
+.header-name{
+    width: 200px;
+    height: 20px;
+    text-align: right;
+    padding-right: 15px;
+}
+
+.student-box-name{
+    max-width: 210px;
+    height: 102px;
+    text-align: right;
+    width: 100%;
+    display: flex;
+    padding-left: 10px;
+    //justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+}
+.student-box-table{
+    width: 100%;
+    height: 65%;
+}
+
+.student-box-table tr td{
+    border: 2px solid #fff;
+    padding-left: 5px;
+}
+
+.student-box .icon{
+    width: 20%;
+    padding: 0px;
+    text-align: center;
+}
+
+.student-table .glyphicon{
+    color: #4F81BD;
+}
+
+.home-table .table-name{
+    border-top: 0px;
+}
+
+.home-table .icon{
+    text-align: center;
+    font-size: 24px;
+}
+
+.glyphicon .readed{
+    opacity: 0.8;
+}
+
+.responsible-photo{
+    width: 40px;
+}
+
+.responsible-table a{
+    color: #000;
+}
+
+a.responsible-name {
+    color: #337ab7;
+    text-decoration: underline;
+}
+
+.responsible-table a{
+    text-decoration: underline;
+}
+
+.responsible-table-photo{
+    text-align: center;
+    width: 7%;
+}
+
+.text-center{
+    text-align: center;
+}
+
+table#grade tr td{
+    text-align: center;
+}
+
+#who-body{
+    width: 80%;
+    text-align: left;
+    padding-left: 5px;
+    color: #333;
+
+}
+
+#who-body .check{
+    text-align: left;
+    margin-left: 0px; 
+}
+
+#who-body .teachers{
+    padding-left: 20px;
+}
+
+.teachers{
+    display: none;
+}
+
+#looked-td{
+    text-align: center;
+}
+
+
+#looked-td button span{
+
+    font-size: 26px;
+}
+
+#looked-td button span:hover{
+    opacity: 0.7;
+}
+
+h4#apontamento{
+    color: #3A5FCD;
+}
+
+.div-tabs#apontamento{
+    text-align: left;
+}
+
+.li-nav{
+    text-align: left;
+}
+
+.nav-text{
+    color: #444;
+    text-align: left;
+}
+
+img.teachers-photo{
+    width: 25%;
+
+}
+
+td.teachers-photo a{
+    text-align: center;
+    color: #3A5FCD; 
+}
+
+td.teachers-photo{
+    text-align: center;
+}
+
+.date-td{
+    text-align: center;
+}
+
+.row-school{
+    padding-left: 15px;
+    padding-bottom: 10px;
+    margin-top: 90px; 
+}
+
+.row-school button{
+    margin-right: 10px;
+
+}
+
+.div-content#notes{
+    display: none;
+}
+
+.tab-content#schedules{
+    border-top: 1px solid #dcdcdc;
+}
+
+.answer{
+    font-size: 26px;
+    width: 6%;
+    text-align: center;
+}
+
+.answer:hover{
+    opacity: 0.6;
+}
+
+.modal-title#ModalLabel{
+    color:#333;
+}
+
+.modal-body .schedule{
+    margin-top: 20px;
+    color: #333;
+}
+
+#schedule-body{
+    color: #333;
+    text-align: left;
+}
+
+#schedule-footer{
+    padding-top: 40px;
+    padding-bottom:  10px;
+}
+
+#schedule-footer button{
+    margin-left: 5px;
+}
+
+#answer-icon{
+    color: #333;
+}
+
+#schedule-textarea{
+    width: 95%;
+    margin-left: 3%;
+    max-width: 95%;
+    max-height: 300px;
+    margin-bottom: 10px;
+}
+
+.modal-body-answer{
+    background: #f8f8ff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+    border-top: 1px solid #ccc;
+}
+
+.modal-body-answer h4{
+    margin-left: 20px;
+    color: #333;
+}
+
+th.who{
+    width: 25%;
+}
+

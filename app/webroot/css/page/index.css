@@ -1,0 +1,62 @@
+.btn {
+    border-radius: 0px;
+}
+.btn-primary {
+    background-color: #3b5997;
+}
+.btn-success  {
+    background-color: #2497ac;
+    border-color: #2497ac;
+}
+.btn-info {
+    background-color: #A9A055;
+    border-color: #A9A055;
+}
+.btn-warning {
+    color: #A9A055;
+    background-color: #FFFFFF;
+    border-color: #A9A055;
+}
+.rowLogo {
+    text-align: center;
+    margin-top: 25px;
+}
+.bottomLine {
+    width: 100%;
+    border-bottom: 2px solid #999;
+}
+.textLogin {
+    font-size: 20px;
+    color: #A9A055;
+    margin-bottom: 15px;
+}
+.marginTop25 {
+    margin-top: 25px;
+}
+input.transparent-input{
+    display: block;
+    background-color:transparent !important;
+    border:none !important;
+    padding: 10px 10px 10px 10px; 
+    width: 100%; 
+}
+.unit { 
+    position: absolute; 
+    display: block; 
+    left: 16px;
+    top: 3px;
+    z-index: 9; 
+}
+.input-box { 
+    position: relative; 
+}
+.logologin {
+    width: 100%; 
+    margin-bottom: 1%;
+}
+
+#enterMobilebuttom:HOVER{
+    border: 1px solid #3b5997;
+    background: #1b6d85;
+}
+

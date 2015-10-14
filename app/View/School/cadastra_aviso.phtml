@@ -1,0 +1,48 @@
+<div id="div-content">
+    <div class="cadSeries">
+        <form class="cadAviso" method="post" action="cadastraAviso">
+            <h4>Cadastrar Aviso</h4>
+            <hr />
+            <div>
+                <span class="label pull-left">Data</span>
+                <input type="date" class="form-control school-form pull-right" name="date" style="width: 80%;"/>
+            </div>
+            <br/>
+            <br/>
+            <hr style="position: relative;"/>
+
+            <div>
+                <span class="label pull-left">Descrição</span>
+                <textarea class="form-control school-form pull-right" rows="2" name="description" style="width: 80%;"></textarea>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <hr style="position: relative;"/>
+
+            <div>
+                <span class="label pull-left">Para </span>
+                <div class="form-group pull-right btn-drop-serie">
+                    <select class="form-control" id="sel1" name="public">
+                        <option value="PUBLIC">Todos</option>
+                        <?php foreach ($series as $serie) { ?>
+                            <option value="<?php echo $serie['series']['description']; ?>">
+                                <?php echo $serie['series']['description']; ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+
+            <div class="buttons-area">
+
+                <a class="btn btn-primary btn-lg" href="#" role="button"><button type="submit" style="background: transparent; border: 0px;">SALVAR</button></a>
+                <a class="btn btn-primary btn-lg" href="#" role="button">CANCELAR</a>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+

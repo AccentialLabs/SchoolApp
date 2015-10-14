@@ -1,0 +1,59 @@
+<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+<div id="div-content" class="avisos">
+    <table border="1" class="table table-bordered home-table" id="avisos">
+        <thead>
+            <tr>
+                <th colspan="5">
+                    Séries
+                    <a class="btn btn-primary btn-lg home pull-right" id="home-table-button" href="cadastraSerie" role="button">+</a>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Série
+                </th>
+                <th>
+                    Professor(es)
+                </th>
+                <th>
+                    Alunos
+                </th>
+                <th>
+                    Remover
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <?php
+            if ($series) {
+                foreach ($series as $serie) {
+                    ?>
+                    <tr class="table-home-impar" id="<?php echo $serie['series']['id']; ?>">
+                        <td><?php echo $serie['series']['description']; ?></td>
+                        <td><?php echo $serie['series']['teachers']; ?></td>
+                        <td><?php echo $serie['series']['students_qtd']; ?> alunos</td>
+                        <td class="deleterow">
+                            <form method="post" action="series">
+                                <input type="hidden" name="id" value="<?php echo $serie['series']['id']; ?>" />
+                                <button type="submit" style="background: transparent; border: 0px;" class="glyphicon glyphicon-trash"></button>
+                            </form>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            } else {
+                ?>
+                <tr ><td colspan="5">Nenhuma série cadastrada</td></tr>
+            <?php }
+            ?>
+        </tbody>
+    </table>
+
+</table>
+</div>
+
+
+
+

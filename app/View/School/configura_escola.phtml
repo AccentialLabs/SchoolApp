@@ -1,0 +1,77 @@
+<div id="div-content">
+    <div class="cadSeries">
+        <form enctype="multipart/form-data" class="config-school" method="post" action="configuraEscola">
+            <h4>Configura Escola</h4>
+            <hr />
+            <label class="checkbox-inline">
+                Nome
+                <input type="text" class="form-control school-form pull-right" name="name" value="<?php echo $school['schools']['name']; ?>" style="width: 80%;"/>
+            </label>
+            <br/>
+
+            <label class="checkbox-inline">
+                Endereço
+                <textarea class="form-control school-form pull-right" name="address"  style="width: 80%;"><?php echo $school['schools']['address']; ?></textarea>
+            </label>
+            <br/>
+
+            <label class="checkbox-inline">
+                Telefones
+                <input type="text" class="form-control school-form pull-right" value="<?php echo $school['schools']['phone']; ?>" name="phone" style="width: 80%;" /><br/>
+                <input type="text" class="form-control school-form pull-right" value="<?php echo $school['schools']['phone_2']; ?>" name="phone_2" style="width: 80%;"/></label>
+            <br/>
+
+            <label class="checkbox-inline">
+                Email de contato
+                <input type="text" class="form-control school-form pull-right" name="email" value="<?php echo $school['schools']['email']; ?>" style="width: 80%;"/>
+            </label>
+            <br/>
+
+            <label class="checkbox-inline">
+                Nome do Responsável
+                <input type="text" class="form-control school-form pull-right" value="<?php echo $school['schools']['responsible_name']; ?>" name="responsible_name" style="width: 80%;"/>
+            </label>
+            <br/>
+
+            <label class="checkbox-inline">
+                Email do responsável
+                <input type="text" class="form-control school-form pull-right" value="<?php echo $school['schools']['responsible_email']; ?>" name="responsible_email" style="width: 80%;"/>
+            </label>
+            <br/>
+
+            <label class="checkbox-inline">
+                Nome do administrador
+                <input type="text" class="form-control school-form pull-right" value="<?php echo $school['schools']['admin_name']; ?>" name="admin_name" style="width: 80%;"/>
+            </label>
+            <br/>
+
+            <label class="checkbox-inline">
+                Email do administrador
+                <input type="text" class="form-control school-form pull-right" value="<?php echo $school['schools']['admin_email']; ?>" name="admin_email" style="width: 80%;"/>
+            </label>
+            <br/>
+
+            <label class="checkbox-inline">
+                Senha
+                <input type="password" class="form-control school-form pull-right" value="<?php echo $school['schools']['login_pass']; ?>" name="password"  style="width: 80%;"/>
+            </label>
+            <br/>
+
+            <label class="checkbox-inline">
+                Confirmar Senha
+                <input type="password" class="form-control school-form pull-right" name="password-confirm" id="password-confirm" style="width: 80%;"/>
+            </label>
+            <br/>
+
+            <label class="checkbox-inline">Foto
+                <input type="file" class="pull-right" value="<?php echo $school['schools']['photo']; ?>" name="photo"/>
+            </label>
+            <br/>
+
+            <label class="checkbox-inline btn-region-config">
+                <button class="btn btn-danger">CANCELAR</button>
+                <button class="btn btn-primary" type="submit">SALVAR</button>
+            </label>
+        </form>
+    </div>
+</div>

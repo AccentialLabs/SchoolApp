@@ -1,0 +1,66 @@
+<div id="div-content">
+    <div class="cadSeries" id="cadAluno">
+        <form enctype="multipart/form-data" method="post" action="cadastraAluno">
+            <h4>Cadastrar Aluno</h4>
+            <hr />
+            <label class="checkbox-inline">Nome <input type="text" class="form-control school-form pull-right" name="name" style="width: 80%;"/></label>
+            <br/>
+
+            <label class="checkbox-inline">Série
+                <div class="form-group pull-right btn-drop-aluno">
+                    <select class="form-control" id="sel1" name="serie">
+                        <?php foreach ($series as $serie) { ?>
+                            <option value="<?php echo $serie['series']['id']; ?>" ><?php echo $serie['series']['description']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </label>
+            <br/>
+
+            <label class="checkbox-inline">Nome do Responsável 1<input type="text" class="form-control school-form pull-right" name="responsible_name_1" style="width: 80%;"/></label>
+            <br/>
+
+            <label class="checkbox-inline">Email do Responsável 1<input type="text" class="form-control school-form pull-right" name="responsible_email_1" style="width: 80%;"/></label>
+            <br/>
+
+            <label class="checkbox-inline">Nome do Responsável 2<input type="text" class="form-control school-form pull-right" name="responsible_name_2" style="width: 80%;"/></label>
+            <br/>
+
+            <label class="checkbox-inline">Email do Responsável 2<input type="text" class="form-control school-form pull-right" name="responsible_email_2" style="width: 80%;"/></label>
+            <br/>
+
+            <label class="checkbox-inline">Sexo
+                <div class="pull-right" style="width: 80%;">
+                    <div class="pull-left check">
+                        <input type="radio" value="male" id="gender" name="gender">Masculino
+                    </div>
+                    <div class="pull-left check">
+                        <input type="radio" value="female" id="gender" name="gender">Feminino
+                    </div>
+                </div>
+            </label>
+            <br/>
+
+            <label class="checkbox-inline">Data de Nascimento<input type="date" class="form-control school-form pull-right" name="birthday" style="width: 80%;"/></label>
+            <br/>
+
+            <label class="checkbox-inline">Foto
+                <input type="file" class="pull-right" name="photo"/>
+            </label>
+            <br/>
+            <br/>
+
+            <div class="buttons-area" id='grade'>
+                <a class="btn btn-primary btn-lg" href="#" role="button"><button type="submit" style="background: transparent; border: 0px;">SALVAR</button></a>
+                <a class="btn btn-primary btn-lg" href="#" role="button">CANCELAR</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script>
+    $(function() {
+        $(":file").filestyle({input: false});
+    });
+</script>

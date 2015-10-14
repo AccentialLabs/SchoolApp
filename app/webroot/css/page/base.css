@@ -1,0 +1,81 @@
+.navmenu, .navbar-offcanvas {
+    width: 200px;
+}
+.navbar-default {
+    background-color: #93B3D7;
+    border-color: #2497AC;
+}
+.navbar-default .navbar-toggle {
+    float: left;
+    margin-left: 15px;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFF;
+}
+.marginTop5 {
+    margin-top: 5px;
+}
+.centerLogo {
+    margin-right: 25px;
+}
+.centerLogoJezzy {
+    text-align: center;
+}
+.iconSearchJezzy{
+    margin-right: 14px;
+    float: right;
+}
+.marginFooterIcon{
+    margin-left: 23px;
+}
+.container {
+    margin-top: 51px;
+}
+.centerLogoJezzy img{
+    width: 37px;
+    margin-top: 5px;
+}
+
+.sizeLogo{
+    width: 180px !important; 
+    
+}
+.navbar-default .navbar-toggle {
+    border-color: #93B3D7;
+}
+
+.navbar-toggle {
+    padding: 0px 0px; 
+    margin-top: 0px; 
+    margin-bottom: 0px; 
+}
+
+.edit-link{
+    width: 100%;
+   text-align: right;
+}
+
+.edit{
+    text-align: right;
+    
+}
+
+.edit a{
+    text-decoration: none
+}
+
+.edit:hover{
+    background: #dcdcdc;
+    cursor: pointer;
+}
+
+.li-footer{
+    text-align: right;
+    background: #E6E6FA;
+}
+
+.btn-box{
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-top: 6%;
+}

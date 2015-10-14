@@ -1,0 +1,179 @@
+<?php
+$students = $this->Session->read('loggedStudent');
+$sts = array_slice($students, 0, count($students) - 1);
+
+echo $this->Html->script('cadastra_apontamento') . "\n";
+echo $this->fetch('script');
+?>
+
+
+<!-- WEB -->
+<?php if (!preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"])) { ?>
+    <form method="post" action="cadastraApontamento">   
+        <div id="div-content">
+            <div class="cadSeries">
+                <h4>Cadastrar Apontamento</h4>
+                <hr />
+                <div>
+                    <span class="label pull-left">Data</span>
+                    <input type="date" class="form-control school-form pull-right" name="date" style="width: 80%;"/>
+                </div>
+                <br/>
+                <br/>
+                <hr style="position: relative;"/>
+
+                <div>
+                    <span class="label pull-left">Descrição</span>
+                    <input type="text" class="form-control school-form pull-right" name="description" style="width: 80%;"/>
+                </div>
+                <br/>
+                <br/>
+                <hr style="position: relative;"/>
+
+                <div>
+                    <span class="label pull-left">Para:</span>
+
+                    <!-- who body-->
+                    <div class="school-form pull-right" id="who-body" >
+                        <div>
+                            <div class="check">
+                                <input type="radio" value="adm" id="gender" name="apont_to"> Administração da Escola
+                            </div>
+                            <?php foreach ($series as $serie) { ?>
+                                <div class="check">
+                                    <input type="radio" value="<?php echo $serie['series']['description']; ?>" id="gender" name="apont_to">
+                                    <?php echo $serie['series']['description']; ?>
+                                </div>
+                            <?php } ?>
+                            <div class="check" id="specific_teacher">
+                                <input type="radio" value="specific_teacher" id="gender" name="apont_to"> Professor Específico 
+                            </div>
+                            <div class="teachers" id="teachers">
+                                <?php foreach ($teachers as $teacher) { ?>
+                                    <div >
+                                        <input type="radio" value="<?php echo $teacher['teachers']['name']; ?>" id="teacher" name="teacher"> 
+                                        <?php echo $teacher['teachers']['name']; ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="buttons-area">
+            <a class="btn btn-primary btn-lg" href="#" role="button"><button type="submit" style="background: transparent; border: 0px;">SALVAR</button></a>
+            <a class="btn btn-primary btn-lg" href="#" role="button">CANCELAR</a>
+        </div>
+
+    </form>
+
+
+    <?php
+} else {
+    $this->layout = '';
+    ?>
+    <!-- MOBILE -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="../js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/jasny-bootstrap/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" href="../css/page/base.css">
+    <script src="../js/jquery/jquery-2.1.4.min.js"></script>
+    <script src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+
+    <script src="../js/jquery-storage/jquery.cookie.js"></script>
+    <script src="../js/jquery-storage/jquery.storageapi.min.js"></script>
+    <script src="../js/jquery-storage/json2.js"></script>
+    <script src="../js/cadastra_apontamento.js"></script>
+
+    <link rel="stylesheet" href="../css/page/home.css">
+
+
+    <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+        <a class="navmenu-brand" href="#">Meu Diário</a>
+        <ul class="nav navmenu-nav">
+            <li><a href="home">Home</a></li>
+            <li><a href="avisos">Avisos</a></li>
+            <li class="active"><a href="agenda" >Agenda Diária</a></li>
+            <li><a href="eventos">Eventos</a></li>
+            <li><a href="grade">Grade</a></li>
+            <li><a href="configuraUsuario">Configurações</a></li>
+            <li><a href="logout">Sair</a></li>
+        </ul>
+    </nav>
+    <div class="navbar navbar-default navbar-fixed-top centerLogoJezzy">
+        <span class="centerLogo">
+            <img src="../img/school/logo/online-school-mobile.png" class="marginTop5 sizeLogo" />
+        </span>
+        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+            <img src="../img/school/Menu.PNG" class="" />
+        </button>
+        <span class="iconSearchJezzy">
+          <!--  <img src="../img/school/logo/Icon - Fotos.png" class="marginTop5" /> -->
+        </span>
+    </div>
+
+    <div class="container">
+
+        <h3>Cadastrar Apontamento</h3>
+
+        <form method="post" action="cadastraApontamento" class="form-apontamento">
+            <label for="date">Date:</label>
+            <input type="date" name="date" id="date" value="" class="form-control">
+
+            <label for="description">Descrição:</label>
+            <textarea type="text" name="description" id="description" value="" class="form-control"></textarea>
+
+            <div>
+                <label for="gender">Para:</label>
+                <!-- who body-->
+                <div class="school-form" id="who-body" >
+                    <div>
+                        <div class="check">
+                            <input type="radio" value="adm" id="gender" name="apont_to"> Administração da Escola
+                        </div>
+                         <?php foreach ($series as $serie) { ?>
+                                <div class="check">
+                                    <input type="radio" value="<?php echo $serie['series']['description']; ?>" id="gender" name="apont_to">
+                                    <?php echo $serie['series']['description']; ?>
+                                </div>
+                            <?php } ?>
+                        <div class="check" id="specific_teacher">
+                            <input type="radio" value="specific_teacher" id="gender" name="apont_to"> Professor Específico 
+                        </div>
+                        <div class="teachers" id="teachers" style="display: none;">
+                            <?php foreach ($teachers as $teacher) { ?>
+                                    <div >
+                                        <input type="radio" value="<?php echo $teacher['teachers']['name']; ?>" id="teacher" name="teacher"> 
+                                        <?php echo $teacher['teachers']['name']; ?>
+                                    </div>
+                                <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-success btn-lg btn-block" id="enterMobilebuttom">CADASTRAR</button>
+                </div>
+                <div class="col-xs-12">
+                    <button type="reset" class="btn btn-lg btn-block" id="enterMobilebuttom">CANCELAR</button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+
+    <script src="../js/page/base.js"></script>
+
+    <?php
+}

@@ -1,0 +1,48 @@
+<div id="div-content">
+    <div class="cadSeries">
+        <form method="post" action="cadastraSerie">
+            <h4>Cadastrar Série</h4>
+            <hr />
+            <div>
+                <span class="label pull-left">Descrição</span>
+                <input tytpe="text" class="form-control school-form pull-right" name="description" style="width: 80%;"/>
+            </div>
+            <br/>
+            <br/>
+            <hr style="position: relative;"/>
+
+            <!-- DELETE -->
+            <div>
+                <span class="label pull-left">Quantidade de Alunos</span>
+                <input tytpe="number" class="form-control school-form pull-right" name="students_qtd" style="width: 80%;"/>
+            </div>
+            <br/>
+            <br/>
+            <hr style="position: relative;"/>
+
+            <div>
+                <span class="label pull-left">Professor</span>
+                <div class="form-group pull-right btn-drop-serie">
+
+                    <?php if ($teachers) { ?>
+                        <select class="form-control" id="sel1" name="teachers">
+                            <?php foreach ($teachers as $teacher) { ?>
+                                <option><?php echo $teacher['teachers']['name']; ?></option>
+                            <?php } ?>
+                        </select>
+                    <?php } else { ?>
+                        <span class="form-warning">
+                            Necessesário <a href="cadastraProfessor" >cadastrar professores</a> antes de continuar
+                        </span>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="buttons-area">
+
+                <a class="btn btn-primary btn-lg" href="#" role="button"><button type="submit" style="background: transparent; border: 0px;">SALVAR</button></a>
+                <a class="btn btn-primary btn-lg" href="#" role="button">CANCELAR</a>
+            </div>
+            
+        </form>
+    </div>
+</div>

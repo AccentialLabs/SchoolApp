@@ -1,0 +1,65 @@
+<div id="div-content" class="avisos">
+
+    <table border="1" class="table table-bordered home-table" id="avisos">
+        <thead>
+            <tr>
+                <th colspan="5">
+                    Avisos
+                    <a class="btn btn-primary btn-lg home pull-right" id="home-table-button" href="cadastraAviso" role="button">+</a>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Descrição
+                </th>
+                <th>
+                    Quem
+                </th>
+                <th>
+                    Visto
+                </th>
+                <th>
+                    Excluir
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if ($warnings) {
+                foreach ($warnings as $warning) {
+                    ?>
+                    <tr class="table-home-impar">
+                        <td><?php echo date("d/M", strtotime($warning['warnings']['date'])); ?></td>
+                        <td><?php echo $warning['warnings']['description']; ?></td>
+                        <?php if ($warning['warnings']['public'] == 'ACTIVE') { ?>
+                            <td>Todos</td>
+                        <?php } else { ?>
+                            <td><?php echo $warning['warnings']['to_serie']; ?></td>
+                        <?php } ?>
+                        <td><?php echo $warning['warnings']['looked']; ?>%</td>
+                        <td class="deleterow">
+                            <form method="post" action="avisos">
+                                <input type="hidden" name="id" value="<?php echo $warning['warnings']['id']; ?>" />
+                                <button type="submit" style="background: transparent; border: 0px;" class="glyphicon glyphicon-trash"></button>
+                            </form>
+                        </td>
+                    </tr>
+
+                    <?php
+                }
+            } else {
+                ?>
+                <tr ><td colspan="5">Nenhum aviso cadastrado</td></tr>
+            <?php }
+            ?>
+        </tbody>
+    </table>
+
+</table>
+
+</div>
+

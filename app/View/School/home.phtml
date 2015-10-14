@@ -1,0 +1,132 @@
+<!-- conteudo -->
+<?php echo $this->Html->script('Chart.min'); ?>
+
+<script type="text/javascript">
+
+    var options = {
+        responsive: true
+    };
+
+    var dataWarning = [
+        {
+            value: <?php echo $statistics['warnings']['looked'] ?>,
+            color: "#436EEE",
+            highlight: "#3A5FCD",
+            label: "Lidas"
+        },
+        {
+            value: <?php echo $statistics['warnings']['waiting'] ?>,
+            color: "#B22222",
+            highlight: "#A52A2A",
+            label: "Não Lidas"
+        }
+    ]
+
+    var dataSchedule = [
+        {
+            value: <?php echo $statistics['daily_schedules']['looked'] ?>,
+            color: "#436EEE",
+            highlight: "#3A5FCD",
+            label: "Lidas"
+        },
+        {
+            value: <?php echo $statistics['daily_schedules']['waiting'] ?>,
+            color: "#B22222",
+            highlight: "#A52A2A",
+            label: "Não Lidas"
+        }
+    ]
+
+    var dataEvent = [
+        {
+            value: <?php echo $statistics['events']['looked'] ?>,
+            color: "#436EEE",
+            highlight: "#3A5FCD",
+            label: "Lidas"
+        },
+        {
+            value: <?php echo $statistics['events']['waiting'] ?>,
+            color: "#B22222",
+            highlight: "#A52A2A",
+            label: "Não Lidas"
+        }
+    ]
+
+    window.onload = function() {
+        var ctx = document.getElementById("GraficoPizza").getContext("2d");
+        var PizzaChart = new Chart(ctx).Pie(dataWarning, options);
+
+        var ctx2 = document.getElementById("GraficoPizza2").getContext("2d");
+        var PizzaChart2 = new Chart(ctx2).Pie(dataSchedule, options);
+
+        var ctx3 = document.getElementById("GraficoPizza3").getContext("2d");
+        var PizzaChart3 = new Chart(ctx3).Pie(dataEvent, options);
+    }
+</script>
+
+<div id="div-content">
+
+    <div class="home-statistics">
+        <div class="statistics-box pull-left">
+            <span><h4>Avisos</h4></span>
+            <!-- gráfico avisos -->
+            <canvas id="GraficoPizza" style="width:100%; height: 190px;"></canvas>
+            <p><a class="btn btn-primary btn-lg home" href="avisos" role="button">+</a></p>
+        </div>
+        <div class="statistics-box pull-left">
+            <span><h4>Agenda diária</h4></span>
+            <!-- gráfico agendad diária -->
+            <canvas id="GraficoPizza2" style="width:100%; height: 190px;"></canvas>
+            <p><a class="btn btn-primary btn-lg home" href="agenda" role="button">+</a></p>
+        </div>
+        <div class="statistics-box pull-left">
+            <span><h4>Eventos</h4></span>
+            <!-- gráfico eventos -->
+            <canvas id="GraficoPizza3" style="width:100%; height: 190px;"></canvas>
+            <p><a class="btn btn-primary btn-lg home" href="eventos" role="button">+</a></p>
+        </div>
+    </div>   
+
+    <div class="home-table-div">
+        <table border="1" class="table table-bordered home-table">
+            <thead>
+                <tr>
+                    <th colspan="4">
+                        Notícias
+                        <a class="btn btn-primary btn-lg home pull-right" id="home-table-button" href="#" role="button">+</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <?php if ($news[0]) { ?>
+                    <tr class="table-home-impar">
+                        <td><?php echo date("d/M", strtotime($news[0][0]['warnings']['date'])); ?></td>
+                        <td><?php echo $news[0][0]['warnings']['description']; ?></td>
+                        <td class='icon'><a href="avisos"><span class="glyphicon glyphicon-envelope letter-btn" aria-hidden="true"></span></a></td>
+                    </tr>
+                <?php } ?>
+
+                <?php if ($news[1]) { ?>
+                    <tr class="table-home-par">
+                        <td><?php echo date("d/M", strtotime($news[1][0]['daily_schedules']['date'])); ?></td>
+                        <td><?php echo $news[0][0]['daily_schedules']['desciption']; ?></td>
+                        <td class='icon'><a href="agenda" ><span class="glyphicon glyphicon-envelope letter-btn" aria-hidden="true"></span></a></td>
+                    </tr>
+                <?php } ?>
+
+                <?php if ($news[2]) { ?>
+                    <tr class="table-home-impar">
+                        <td><?php echo date("d/M", strtotime($news[2][0]['events']['date'])); ?></td>
+                        <td><?php echo$news[2][0]['events']['description']; ?></td>
+                        <td class='icon'><a href="eventos"><span class="glyphicon glyphicon-envelope letter-btn" aria-hidden="true"></span></a></td>
+                    </tr>
+
+                <?php } ?>
+            </tbody>
+        </table>
+
+        </table>
+    </div>
+
+</div>

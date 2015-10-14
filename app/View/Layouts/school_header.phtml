@@ -1,0 +1,106 @@
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
+
+<!-- Styles -->
+<link href="css/style.css" rel="stylesheet">
+<?php
+echo $this->Html->script('bootstrap.min') . "\n";
+echo $this->Html->script('menu') . "\n";
+echo $this->fetch('script');
+
+//echo $this->Html->css('bootstrap.min') . "\n";
+echo $this->Html->css('style') . "\n";
+echo $this->fetch('css');
+?>
+
+<?php
+$school = $this->Session->read('loggedSchool');
+$waitNotes = '';
+$i = 0;
+foreach ($school['notes'] as $note) {
+    if ($note['notes']['status'] == 'WAIT' && $note['notes']['note_to'] == 'adm') {
+        $waitNotes[$i] = $note;
+        $i++;
+    }
+}
+?>
+
+<div class="container">
+    <?php if ($school['logged'] == 'adm') { ?>
+        <header class="row" id="header">
+            <h4 class="pull-left"><?php echo $school['schools']['name']; ?></h4>
+            <div class="pull-right user-photo-cont" >
+                <span>
+                    <img src="<?php echo $school['schools']['photo']; ?>" class="img-circle student-photo-header" />
+                </span>
+            </div>
+            <div class="pull-right header-name">
+                <span>
+                    <?php echo $school['schools']['admin_name']; ?>
+                </span>
+                <br/>
+                <span>
+                    Administrador
+                </span>
+            </div>
+        </header>
+    <?php } else { ?>
+        <header class="row" id="header">
+            <h4 class="pull-left"><?php echo $school['teachers']['name']; ?></h4>
+            <div class="pull-right user-photo-cont" >
+                <span>
+                    <img src="<?php echo $school['teachers']['photo']; ?>" class="img-circle student-photo-header" />
+                </span>
+            </div>
+            <div class="pull-right header-name">
+                <span>
+                    <?php echo $school['teachers']['name']; ?>
+                </span>
+                <br/>
+                <span>
+                    Professor(a)
+                </span>
+            </div>
+        </header>
+    <?php } ?>
+    <div class="row" id="corpo">
+        <aside role="complementary" class="col-md-4" id="menu-lateral">
+
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>	Ínicio</a></li>
+                <li><a href="avisos"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>	Avisos</a></li>
+                <li><a href="agenda"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>	Agenda Diária</a></li>
+                <li><a href="eventos"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>	Eventos</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>	Configurações <b class="caret"></b></a>
+                    <?php if ($school['logged'] == 'adm') { ?>
+                        <ul class="dropdown-menu">
+                            <li><a href="series">Séries</a></li>
+                            <li><a href="professores">Professores</a></li>
+                            <li><a href="cadastraGrade">Cadastrar Grade</a></li>
+                            <li><a href="alunos">Alunos/Pais</a></li>
+                            <li><a href="configuraEscola">Escola</a></li>
+                        </ul>
+                    <?php } else { ?>
+                        <ul class="dropdown-menu">
+                            <li><a href="configuraProfessor">Meu Perfil</a></li>
+                        </ul>
+                    <?php } ?>
+                </li>
+                <li><a href="logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>	Sair</a></li>		
+            </ul>
+
+        </aside>
+
+        <div role="main" class="col-md-8" id="col-md-8">
+            <?php echo $this->fetch('content'); ?>
+        </div>
+    </div>
+    <footer class="row">
+
+    </footer>
+</div>
+

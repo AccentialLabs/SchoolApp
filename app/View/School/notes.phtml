@@ -1,0 +1,136 @@
+<meta http-equiv="refresh" content="0;URL=agenda#notes" /> 
+
+<div id="div-content" class="avisos">
+    <div class="div-tabs" id="apontamento">
+        <h4 id="apontamento">Apontamentos</h4>
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active li-nav">
+                <a data-toggle="tab" href="#apont-wait">
+                    <div class="nav-text">
+                        Ainda não Lidos
+                    </div>
+                </a>
+            </li>
+            <li class="li-nav">
+                <a data-toggle="tab" href="#apont-read">
+                    <div class="nav-text">
+                        Lidos
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+
+            <!-- NÃO LIDAS-->
+            <div id="apont-wait" class="tab-pane fade in active">
+                <table border="1" class="table table-bordered home-table" id="avisos">
+                    <thead>
+
+                        <tr>
+                            <th>
+                                Data
+                            </th>
+                            <th>
+                                Quem
+                            </th>
+                            <th>
+                                Descrição
+                            </th>
+
+                            <th>
+                                Visto
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if ($notes) {
+                            foreach ($notes as $note) {
+                                if ($note['notes']['status'] == 'WAIT') {
+                                    ?>
+                                    <tr class="table-home-impar">
+                                        <td><?php echo date("d/M", strtotime($note['notes']['date'])); ?></td>
+                                        <td>
+                                            <span class="">Responsável: </span><?php echo $note['students']['responsible_name_1']; ?><br/>
+                                            <span>Aluno: </span><?php echo $note['students']['name']; ?>
+                                            <span>Série: </span><?php echo $note['series']['description']; ?>
+                                        </td>
+                                        <td><?php echo $note['notes']['description']; ?></td>
+                                        <td class="deleterow" id="looked-td">
+                                            <form method="post" action="notes">
+                                                <input type="hidden" name="id" value="<?php echo $note['notes']['id']; ?>" />
+                                                <button type="submit" style="background: transparent; border: 0px;">
+                                                    <span class="glyphicon glyphicon-ok-circle"></span>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                    <?php
+                                }
+                            }
+                        } else {
+                            ?>
+                            <tr ><td colspan="5">Nenhum apontamento enviado a você</td></tr>
+                        <?php }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- LIDAS -->
+            <div id="apont-read" class="tab-pane fade">
+                <table border="1" class="table table-bordered home-table" id="avisos">
+                    <thead>
+
+                        <tr>
+                            <th>
+                                Data
+                            </th>
+                            <th>
+                                Quem
+                            </th>
+                            <th>
+                                Descrição
+                            </th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if ($notes) {
+                            foreach ($notes as $note) {
+                                if ($note['notes']['status'] == 'READ') {
+                                    ?>
+                                    <tr class="table-home-impar">
+                                        <td><?php echo date("d/M", strtotime($note['notes']['date'])); ?></td>
+                                        <td>
+                                            <span class="">Responsável: </span><?php echo $note['students']['responsible_name_1']; ?><br/>
+                                            <span>Aluno: </span><?php echo $note['students']['name']; ?>
+                                            <span>Série: </span><?php echo $note['series']['description']; ?>
+                                        </td>
+                                        <td><?php echo $note['notes']['description']; ?></td>
+                                    </tr>
+
+                                    <?php
+                                }
+                            }
+                        } else {
+                            ?>
+                            <tr ><td colspan="5">Nenhum apontamento enviado a você</td></tr>
+                        <?php }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+

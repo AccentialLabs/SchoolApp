@@ -1,0 +1,129 @@
+<div id="div-content" class="div-content-grade">
+    <form action="cadastraGrade" method="post">
+        <div id="serie-content">
+            <label for="serie">Turma:</label>
+            <select id="serie" name="serie" class="form-control" id="sel1">
+                <option>Selecione</option>
+                <?php foreach ($series as $serie) { ?>
+                    <option value="<?php echo $serie['series']['id']; ?>"><?php echo $serie['series']['description']; ?></option>
+                <?php } ?>
+            </select>
+        </div>
+        <table border="1" class="table table-bordered home-table" id="grade">
+            <thead>
+                <tr>
+                    <th colspan="6">
+                        Grade de Aulas
+                    </th>
+                </tr>
+                <tr id="labels" class="grade-table">
+                    <th id="hour"></th>
+                    <th>SEGUNDA</th>
+                    <th>TERÇA</th>
+                    <th>QUARTA</th>
+                    <th>QUINTA</th>
+                    <th>SEXTA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>7:00</td>
+                    <td><input type="text" class="form-control" name="7hseg"/></td>
+                    <td><input type="text" class="form-control" name="7hter"/></td>
+                    <td><input type="text" class="form-control" name="7hqua"/></td>
+                    <td><input type="text" class="form-control" name="7hqui"/></td>
+                    <td><input type="text" class="form-control" name="7hsex"/></td>
+                </tr>
+
+                <tr>
+                    <td>8:00</td>
+                    <td><input type="text" class="form-control" name="8hseg"/></td>
+                    <td><input type="text" class="form-control" name="8hter"/></td>
+                    <td><input type="text" class="form-control" name="8hqua"/></td>
+                    <td><input type="text" class="form-control" name="8hqui"/></td>
+                    <td><input type="text" class="form-control" name="8hsex"/></td>
+                </tr>
+
+                <tr>
+                    <td>9:00</td>
+                    <td><input type="text" class="form-control" name="9hseg"/></td>
+                    <td><input type="text" class="form-control" name="9hter"/></td>
+                    <td><input type="text" class="form-control" name="9hqua"/></td>
+                    <td><input type="text" class="form-control" name="9hqui"/></td>
+                    <td><input type="text" class="form-control" name="9hsex"/></td>
+                </tr>
+
+                <tr>
+                    <td>9:15</td>
+                    <td><input type="text" class="form-control" name="915hseg"/></td>
+                    <td><input type="text" class="form-control" name="915hter"/></td>
+                    <td><input type="text" class="form-control" name="915hqua"/></td>
+                    <td><input type="text" class="form-control" name="915hqui"/></td>
+                    <td><input type="text" class="form-control" name="915hsex"/></td>
+                </tr>
+
+                <tr>
+                    <td>10:15</td>
+                    <td><input type="text" class="form-control" name="1015hseg"/></td>
+                    <td><input type="text" class="form-control" name="1015hter"/></td>
+                    <td><input type="text" class="form-control" name="1015hqua"/></td>
+                    <td><input type="text" class="form-control" name="1015hqui"/></td>
+                    <td><input type="text" class="form-control" name="1015hsex"/></td>
+                </tr>
+
+                <tr>
+                    <td>11:15</td>
+                    <td><input type="text" class="form-control" name="1115hseg"/></td>
+                    <td><input type="text" class="form-control" name="1115hter"/></td>
+                    <td><input type="text" class="form-control" name="1115hqua"/></td>
+                    <td><input type="text" class="form-control" name="1115hqui"/></td>
+                    <td><input type="text" class="form-control" name="1115hsex"/></td>
+                </tr>
+
+                <tr>
+                    <td>12:00</td>
+                    <td><input type="text" class="form-control" name="12hseg"/></td>
+                    <td><input type="text" class="form-control" name="12hter"/></td>
+                    <td><input type="text" class="form-control" name="12hqua"/></td>
+                    <td><input type="text" class="form-control" name="12hqui"/></td>
+                    <td><input type="text" class="form-control" name="12hsex"/></td>
+                </tr>
+
+                <tr>
+                    <td>14:00</td>
+                    <td><input type="text" class="form-control" name="14hseg"/></td>
+                    <td><input type="text" class="form-control" name="14hter"/></td>
+                    <td><input type="text" class="form-control" name="14hqua"/></td>
+                    <td><input type="text" class="form-control" name="14hqui"/></td>
+                    <td><input type="text" class="form-control" name="14hsex"/></td>
+                </tr>
+
+                <tr>
+                    <td>15:00</td>
+                    <td><input type="text" class="form-control" name="15hseg"/></td>
+                    <td><input type="text" class="form-control" name="15hter"/></td>
+                    <td><input type="text" class="form-control" name="15hqua"/></td>
+                    <td><input type="text" class="form-control" name="15hqui"/></td>
+                    <td><input type="text" class="form-control" name="15hsex"/></td>
+                </tr>
+
+                <tr>
+                    <td>16:00</td>
+                    <td><input type="text" class="form-control" name="16hseg"/></td>
+                    <td><input type="text" class="form-control" name="16hter"/></td>
+                    <td><input type="text" class="form-control" name="16hqua"/></td>
+                    <td><input type="text" class="form-control" name="16hqui"/></td>
+                    <td><input type="text" class="form-control" name="16hsex"/></td>
+                </tr>
+
+                <tr>
+                    <td colspan="6" id="content-btns">
+                        <a class="btn btn-primary btn-lg" href="#" role="button"><button type="submit" style="background: transparent; border: 0px;">SALVAR</button></a>
+                        <a class="btn btn-primary btn-lg" href="#" role="button">CANCELAR</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+

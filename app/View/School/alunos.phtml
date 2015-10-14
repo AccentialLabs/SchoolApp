@@ -1,0 +1,61 @@
+<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+<div id="div-content" class="avisos">
+
+    <table border="1" class="table table-bordered home-table" id="avisos">
+        <thead>
+            <tr>
+                <th colspan="5">
+                    Alunos/Pais
+                    <a class="btn btn-primary btn-lg home pull-right" id="home-table-button" href="cadastraAluno" role="button">+</a>
+                    <a class="btn btn-primary btn-lg home pull-right" id="carrega-planilha-button" href="#" role="button" name="carrega-planilha">Carregar Planilha</a>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Nome do Aluno
+                </th>
+                <th>
+                    Pais
+                </th>
+                <th>
+                    Série
+                </th>
+                <th>
+                    Remover
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if ($students) {
+                foreach ($students as $student) {
+                    ?>
+                    <tr class="table-home-impar">
+                        <td><?php echo $student['students']['name']; ?></td>
+                        <td><?php echo $student['students']['responsible_name_1']; ?><br/><?php echo $student['students']['responsible_name_2']; ?></td>
+                        <td><?php echo $student['series']['description']; ?></td>
+                        <td class="delete">
+                            <form method="post" action="alunos">
+                                <input type="hidden" name="id" value="<?php echo $student['students']['id']; ?>" />
+                                <button type="submit" style="background: transparent; border: 0px;" class="glyphicon glyphicon-trash"></button>
+                            </form>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            } else {
+                ?>
+                <tr ><td colspan="5">Nenhum alunos cadastrado</td></tr>
+            <?php }
+            ?>
+
+        </tbody>
+    </table>
+
+</table>
+
+</div>
+
+
+
